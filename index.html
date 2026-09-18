@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eng3000 - เรียนรู้ 3,000 คำศัพท์ภาษาอังกฤษพร้อมคำอ่านภาษาไทย</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700amp;display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-3d { transform-style: preserve-3d; }
+    .backface-hidden { backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white py-12 px-6 text-center shadow-lg">
+    <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight">Eng3000: เรียนรู้ 3,000 คำศัพท์อังกฤษสำคัญ</h1>
+    <p class="text-blue-200 text-base md:text-lg max-w-2xl mx-auto font-light">ยกระดับภาษาอังกฤษด้วยคลังคำศัพท์แบ่งตามหมวดหมู่และระดับความรู้ (CEFR)</p>
+  </header>
+
+
+    <div class="mt-4 flex flex-wrap justify-center gap-3">
+
+      <a href="fill-in.html" class="inline-block px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-xl text-sm font-medium transition-all">ไปที่แบบฝึกหัดเติมคำ (Fill in the Blank) &rarr;</a>
+
+      <a href="speaking.html" class="inline-block px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-medium transition-all">🎤 ไปที่ห้องฝึกพูดออกเสียง (Speaking Practice) &rarr;</a>
+    </div>
+
+  <!-- Container -->
+  <main class="max-w-6xl w-full mx-auto px-4 py-10 flex-grow">
+    
+    <!-- Search amp; Filter Section -->
+    <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-10 flex flex-wrap gap-4 items-center justify-between">
+      <div class="flex-1 min-w-[260px]">
+        <input type="text" id="searchInput" placeholder="ค้นหาคำศัพท์ หรือ คำแปล..." onkeyup="filterVocab()" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <select id="levelFilter" onchange="filterVocab()" class="px-4 py-3 border border-slate-200 rounded-xl bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+          <option value="all">ทุกระดับ (CEFR)</option>
+          <option value="A1-A2">A1 - A2 (เริ่มต้น)</option>
+          <option value="B1-B2">B1 - B2 (ปานกลาง)</option>
+        </select>
+        <select id="categoryFilter" onchange="filterVocab()" class="px-4 py-3 border border-slate-200 rounded-xl bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+          <option value="all">ทุกหมวดหมู่</option>
+          <option value="Business">ธุรกิจ (Business)</option>
+          <option value="Daily Life">ชีวิตประจำวัน (Daily Life)</option>
+          <option value="Academic">วิชาการ (Academic)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Interactive Flashcard Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-3 mb-6">แฟลชการ์ดฝึกจำ (Interactive Flashcard)</h2>
+      <div class="flex flex-col items-center perspective-1000">
+        <div id="flashcard" onclick="flipCard()" class="w-full max-w-md h-64 bg-white rounded-2xl border border-slate-200 shadow-lg cursor-pointer transition-transform duration-500 transform-style-3d relative hover:shadow-xl">
+          <!-- Card Front -->
+          <div class="absolute inset-0 w-full h-full backface-hidden flex flex-col justify-center items-center p-6 rounded-2xl bg-white">
+            <div id="cardWord" class="text-3xl font-bold text-blue-600 mb-1">Achieve</div>
+            <span id="cardPos" class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-semibold mb-2">verb</span>
+            <div id="cardPhonetic" class="text-slate-500 text-base">อะ-ชีฟ</div>
+          </div>
+          <!-- Card Back -->
+          <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 flex flex-col justify-center items-center p-6 rounded-2xl bg-blue-50 text-slate-900 border-2 border-blue-500">
+            <div id="cardTranslation" class="text-2xl font-bold mb-2 text-blue-900">บรรลุเป้าหมาย, สำเร็จ</div>
+            <div id="cardExample" class="text-slate-600 italic text-sm text-center px-4">quot;He worked hard to achieve his goals.quot;</div>
+          </div>
+        </div>
+
+        <div class="flex gap-4 mt-6">
+          <button onclick="prevCard()" class="px-6 py-2.5 bg-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-300 transition-colors shadow-sm">ก่อนหน้า</button>
+          <button onclick="nextCard()" class="px-6 py-2.5 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors shadow-sm">ถัดไป</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vocabulary List Table Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-3 mb-6">รายการคำศัพท์ (Vocabulary List)</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+
+        <div class="overflow-x-auto max-h-[600px] overflow-y-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                <th class="p-4 font-semibold">คำศัพท์ (Vocabulary)</th>
+                <th class="p-4 font-semibold">ประเภท (POS)</th>
+                <th class="p-4 font-semibold">คำอ่าน (Thai Reading)</th>
+                <th class="p-4 font-semibold">คำแปล (Thai)</th>
+                <th class="p-4 font-semibold">ประโยคตัวอย่าง (Example Sentence)</th>
+              </tr>
+            </thead>
+            <tbody id="vocabTableBody" class="divide-y divide-slate-200">
+              <!-- Populated dynamically by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Quiz Section -->
+    <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-12">
+      <div class="flex flex-wrap justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-3">แบบทดสอบความรู้ (Quick Quiz)</h2>
+        <button onclick="restartQuiz()" class="px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-xl text-sm font-medium transition-colors border border-slate-200">รีเซ็ตแบบทดสอบ (Reset)</button>
+      </div>
+      <div id="quizContainer" class="text-center">
+        <h3 id="quizQuestion" class="text-xl font-medium text-slate-800 mb-6">กำลังโหลดคำถาม...</h3>
+        <div id="quizOptions" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8"></div>
+      </div>
+      <div id="quizFinished" class="hidden text-center py-6">
+        <div class="text-4xl mb-3">🎉</div>
+        <h3 class="text-2xl font-bold text-slate-800 mb-2">ยินดีด้วย! คุณตอบคำถามครบทุกคำแล้ว</h3>
+        <p class="text-slate-600 mb-6">คุณได้เรียนรู้คำศัพท์ทั้งหมดในคลังเรียบร้อยแล้ว</p>
+        <button onclick="restartQuiz()" class="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-sm">เริ่มทำแบบทดสอบใหม่</button>
+      </div>
+      <!-- Answered Words History -->
+      <div class="mt-8 pt-6 border-t border-slate-200">
+        <h4 class="text-sm font-semibold text-slate-600 mb-3">รายการคำศัพท์ที่ตอบถูกแล้ว (<span id="answeredCount">0</span> คำ):</h4>
+
+        <div id="answeredList" class="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-2 border border-slate-100 rounded-xl bg-slate-50">
+          <span class="text-xs text-slate-400 italic">ยังไม่มีคำศัพท์ที่ตอบแล้ว</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 border-t border-slate-200 text-slate-500 text-sm mt-auto">
+    <p>copy; 2026 Eng3000 - Essential Vocabulary Learning. All rights reserved.</p>
+  </footer>
+
+  <!-- Include JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

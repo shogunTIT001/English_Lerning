@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eng3000 - ฝึกพูดออกเสียง (Speaking Practice)</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white py-10 px-6 text-center shadow-lg">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      <a href="index.html" class="inline-block mb-4 text-emerald-200 hover:text-white text-sm font-medium transition-colors">&larr; กลับหน้าหลัก</a>
+      <h1 class="text-2xl md:text-4xl font-extrabold mb-2 tracking-tight">Eng3000: ห้องฝึกพูดออกเสียง (Speaking Practice)</h1>
+      <p class="text-emerald-200 text-sm md:text-base font-light">กดปุ่มไมโครโฟนเพื่อลองออกเสียงภาษาอังกฤษ ระบบจะเปรียบเทียบเสียงของคุณกับคำศัพท์ที่ถูกต้อง</p>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl w-full mx-auto px-4 py-10 flex-grow">
+
+    <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8 text-center">
+      <!-- Target Word Card -->
+      <div class="mb-6 bg-slate-50 p-6 rounded-xl border border-slate-100 relative">
+        <span id="wordCategory" class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3 inline-block">Daily Life</span>
+        <h2 id="targetWord" class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">Achieve</h2>
+        <p id="targetPhonetic" class="text-slate-500 text-lg mb-1">อะ-ชีฟ</p>
+        <p id="targetTranslation" class="text-slate-700 font-medium text-lg">บรรลุเป้าหมาย, สำเร็จ</p>
+
+        <!-- Native Audio Playback Button -->
+        <button onclick="playNativeAudio()" class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium rounded-xl text-sm transition-colors border border-emerald-200">
+          🔊 ฟังเสียงเจ้าของภาษา
+        </button>
+      </div>
+
+      <!-- Speech Recognition Control Section -->
+      <div class="mb-6">
+        <button id="recordBtn" onclick="toggleRecording()" class="w-24 h-24 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex flex-col justify-center items-center mx-auto shadow-lg transition-all transform active:scale-95">
+          <span id="micIcon" class="text-3xl mb-1">🎙️</span>
+          <span id="micStatus" class="text-xs font-bold>กดเพื่อพูด</span>
+        </button>
+        <p id="speechHint" class="text-slate-400 text-sm mt-3">กดปุ่มแล้วพูดคำว่า "<span id="hintWord">Achieve</span>" ชัดๆ</p>
+      </div>
+
+      <!-- Result &amp; Comparison Output Banner -->
+      <div id="resultBox" class="hidden p-6 rounded-2xl text-center mb-6 transition-all">
+        <div id="scoreBadge" class="text-2xl font-extrabold mb-1"></div>
+        <p id="recognizedText" class="text-slate-700 font-medium text-lg mb-2"></p>
+        <p id="feedbackText" class="text-sm font-normal"></p>
+      </div>
+
+      <!-- Navigation &amp; Word Controls -->
+      <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <button onclick="prevSpeakingWord()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-xl text-sm transition-colors">&larr; คำก่อนหน้า</button>
+        <span class="text-slate-400 text-sm font-medium">คำที่ <span id="currentWordIndex">1</span> / <span id="totalWordCount">100</span></span>
+        <button onclick="nextSpeakingWord()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl text-sm transition-colors shadow-sm">คำถัดไป &rarr;</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 border-t border-slate-200 text-slate-500 text-sm mt-auto">
+    <p>&copy; 2026 Eng3000 - Essential Vocabulary Learning. All rights reserved.</p>
+  </footer>
+
+  <!-- Include JavaScript -->
+  <script src="speaking.js"></script>
+</body>
+</html>

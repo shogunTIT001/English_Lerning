@@ -1,0 +1,2072 @@
+[
+  {
+    "word": "Ability",
+    "pos": "noun",
+    "phonetic": "อะ-บิ-ลิ-ที",
+    "thai": "ความสามารถ",
+    "example": "She has the ability to learn languages quickly.",
+    "exampleThai": "เธอมีความสามารถในการเรียนรู้ภาษาได้อย่างรวดเร็ว",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Accept",
+    "pos": "verb",
+    "phonetic": "แอ็ก-เซ็ปต์",
+    "thai": "ยอมรับ",
+    "example": "I gladly accept your invitation.",
+    "exampleThai": "ฉันยินดีตอบรับคำเชิญของคุณ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Active",
+    "pos": "adj",
+    "phonetic": "แอ็ก-ทีฟ",
+    "thai": "คล่องแคล่ว, ทำงานอยู่",
+    "example": "She maintains an active lifestyle.",
+    "exampleThai": "เธอรักษาวิถีชีวิตที่กระฉับกระเฉงและคล่องแคล่ว",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Adjust",
+    "pos": "verb",
+    "phonetic": "อะ-จัสต์",
+    "thai": "ปรับเปลี่ยน, ปรับตัว",
+    "example": "You can adjust the brightness on your phone.",
+    "exampleThai": "คุณสามารถปรับความสว่างบนโทรศัพท์ของคุณได้",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Advice",
+    "pos": "noun",
+    "phonetic": "แอ็ด-ไวส์",
+    "thai": "คำแนะนำ",
+    "example": "Thank you for your helpful advice.",
+    "exampleThai": "ขอบคุณสำหรับคำแนะนำที่เป็นประโยชน์ของคุณ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Affordable",
+    "pos": "adj",
+    "phonetic": "อะ-ฟอร์ด-เดอ-เบิล",
+    "thai": "ราคาย่อมเยา, ซื้อไหว",
+    "example": "This store sells high quality and affordable clothes.",
+    "exampleThai": "ร้านนี้ขายเสื้อผ้าคุณภาพดีและราคาย่อมเยา",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Alternative",
+    "pos": "noun",
+    "phonetic": "ออล-เทอร์-นะ-ทีฟ",
+    "thai": "ทางเลือก",
+    "example": "Solar power is an alternative energy source.",
+    "exampleThai": "พลังงานแสงอาทิตย์เป็นแหล่งพลังงานทางเลือก",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Ambition",
+    "pos": "noun",
+    "phonetic": "แอม-บิ-ชัน",
+    "thai": "ความทะเยอทะยาน",
+    "example": "Her ambition is to become a top engineer.",
+    "exampleThai": "ความทะเยอทะยานของเธอคือการเป็นวิศวกรชั้นนำ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Announce",
+    "pos": "verb",
+    "phonetic": "แอ็ก-เนา นส์",
+    "thai": "ประกาศ",
+    "example": "They will announce the quiz results tomorrow.",
+    "exampleThai": "พวกเขาจะประกาศผลการทดสอบในวันพรุ่งนี้",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Anxiety",
+    "pos": "noun",
+    "phonetic": "แอง-ไซ-เออ-ที",
+    "thai": "ความวิตกกังวล",
+    "example": "Regular exercise helps reduce stress and anxiety.",
+    "exampleThai": "การออกกำลังกายสม่ำเสมอช่วยลดความเครียดและความวิตกกังวล",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Apologize",
+    "pos": "verb",
+    "phonetic": "อะ-พอ-โล-ไจซ์",
+    "thai": "ขอโทษ",
+    "example": "I apologize for taking so long to reply.",
+    "exampleThai": "ฉันขอโทษที่ใช้เวลานานในการตอบกลับ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Apparently",
+    "pos": "adv",
+    "phonetic": "แอ็พ-แพ-เร็นต์-ลี",
+    "thai": "ดูเหมือนว่า, ชัดเจนว่า",
+    "example": "Apparently, the train has been delayed.",
+    "exampleThai": "ดูเหมือนว่ารถไฟจะล่าช้า",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Appreciate",
+    "pos": "verb",
+    "phonetic": "แอ็พ-พรี-ชิ-เอท",
+    "thai": "ซาบซึ้ง, ชื่นชม",
+    "example": "We deeply appreciate your continuous support.",
+    "exampleThai": "พวกเราซาบซึ้งในการสนับสนุนอย่างต่อเนื่องของคุณเป็นอย่างยิ่ง",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Appropriate",
+    "pos": "adj",
+    "phonetic": "แอ็พ-โพร-พริ-เอท",
+    "thai": "เหมาะสม",
+    "example": "Please wear appropriate attire for the dinner.",
+    "exampleThai": "กรุณาสวมแต่งกายที่เหมาะสมสำหรับอาหารมื้อค่ำ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Arrange",
+    "pos": "verb",
+    "phonetic": "แอ็ก-เรนจ์",
+    "thai": "จัดเตรียม, นัดหมาย",
+    "example": "We will arrange a video call for next week.",
+    "exampleThai": "พวกเราจะนัดหมายการสนทนาผ่านวิดีโอสำหรับสัปดาห์หน้า",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Assist",
+    "pos": "verb",
+    "phonetic": "แอ็ก-ซิสต์",
+    "thai": "ช่วยเหลือ",
+    "example": "Our team is ready to assist you anytime.",
+    "exampleThai": "ทีมงานของเราพร้อมที่จะช่วยเหลือคุณทุกเมื่อ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Attempt",
+    "pos": "noun",
+    "phonetic": "อะ-เทมปต์",
+    "thai": "ความพยายาม",
+    "example": "His first attempt was successful.",
+    "exampleThai": "ความพยายามครั้งแรกของเขาประสบความสำเร็จ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Attitude",
+    "pos": "noun",
+    "phonetic": "แอ็ด-ทิ-ทูด",
+    "thai": "ทัศนคติ",
+    "example": "A positive attitude helps in overcoming challenges.",
+    "exampleThai": "ทัศนคติเชิงบวกช่วยในการเอาชนะความท้าทาย",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Audience",
+    "pos": "noun",
+    "phonetic": "ออ-ดิ-เอ็นส์",
+    "thai": "ผู้ชม, ผู้ฟัง",
+    "example": "The speaker engaged the audience effectively.",
+    "exampleThai": "ผู้พูดดึงดูดผู้ฟังได้อย่างมีประสิทธิภาพ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Authentic",
+    "pos": "adj",
+    "phonetic": "ออ-เธน-ทิก",
+    "thai": "แท้จริง, น่าเชื่อถือ",
+    "example": "This restaurant serves authentic Thai cuisine.",
+    "exampleThai": "ร้านอาหารแห่งนี้เสิร์ฟอาหารไทยแท้",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Automatic",
+    "pos": "adj",
+    "phonetic": "ออ-โท-แม-ติก",
+    "thai": "อัตโนมัติ",
+    "example": "The sliding doors are completely automatic.",
+    "exampleThai": "ประตูลื่นเปิดปิดเป็นแบบอัตโนมัติทั้งหมด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Balance",
+    "pos": "noun",
+    "phonetic": "แบ็ล-เลินส์",
+    "thai": "สมดุล, ยอดคงเหลือ",
+    "example": "Work-life balance is crucial for well-being.",
+    "exampleThai": "ความสมดุลระหว่างการทำงานและการใช้ชีวิตเป็นสิ่งสำคัญต่อสุขภาวะ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Basic",
+    "pos": "adj",
+    "phonetic": "เบ-สิก",
+    "thai": "พื้นฐาน",
+    "example": "Understanding basic grammar is essential.",
+    "exampleThai": "การเข้าใจไวยากรณ์พื้นฐานเป็นสิ่งจำเป็น",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Beyond",
+    "pos": "prep",
+    "phonetic": "บี-ยอนด์",
+    "thai": "เกินกว่า, พ้น",
+    "example": "The view beyond the mountains was breathtaking.",
+    "exampleThai": "ทิวทัศน์เกินกว่าภูเขานั้นงดงามมาก",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Challenge",
+    "pos": "noun",
+    "phonetic": "แชล-เลนจ์",
+    "thai": "ความท้าทาย",
+    "example": "Overcoming this issue was a big challenge.",
+    "exampleThai": "การเอาชนะปัญหานี้เป็นความท้าทายอย่างมาก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Character",
+    "pos": "noun",
+    "phonetic": "แค-แรก-เทอร์",
+    "thai": "ตัวละคร, บุคลิกภาพ",
+    "example": "Honesty is a core trait of his character.",
+    "exampleThai": "ความซื่อสัตย์เป็นลักษณะเด่นของบุคลิกภาพของเขา",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Classic",
+    "pos": "adj",
+    "phonetic": "คลาส-สิก",
+    "thai": "คลาสสิก, ยอดนิยม",
+    "example": "This novel is considered a classic masterpiece.",
+    "exampleThai": "นวนิยายเรื่องนี้ถือเป็นผลงานชิ้นเอกระดับคลาสสิก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Collapse",
+    "pos": "verb",
+    "phonetic": "คอล-แลปส์",
+    "thai": "พังทลาย, ล้มลง",
+    "example": "The old wooden bridge collapsed during the storm.",
+    "exampleThai": "สะพานไม้เก่าพังทลายลงระหว่างพายุ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Combine",
+    "pos": "verb",
+    "phonetic": "คอม-ไบน์",
+    "thai": "รวมกัน, ผสมผสาน",
+    "example": "Combine all ingredients in a mixing bowl.",
+    "exampleThai": "ผสมส่วนผสมทั้งหมดเข้าด้วยกันในชามผสม",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Community",
+    "pos": "noun",
+    "phonetic": "คัม-มิว-นิ-ที",
+    "thai": "ชุมชน",
+    "example": "The local community organized a clean up event.",
+    "exampleThai": "ชุมชนท้องถิ่นจัดกิจกรรมทำความสะอาด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Compete",
+    "pos": "verb",
+    "phonetic": "คอม-พีต",
+    "thai": "แข่งขัน",
+    "example": "Athletes compete for the championship title.",
+    "exampleThai": "นักกีฬาแข่งขันกันเพื่อตำแหน่งแชมป์",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Confidence",
+    "pos": "noun",
+    "phonetic": "คอน-ฟิ-เดนส์",
+    "thai": "ความมั่นใจ",
+    "example": "Self confidence grows through practice.",
+    "exampleThai": "ความมั่นใจในตนเองเติบโตผ่านการฝึกฝน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Contact",
+    "pos": "noun",
+    "phonetic": "คอน-แท็กต์",
+    "thai": "การติดต่อ, ผู้ติดต่อ",
+    "example": "Keep my phone number as a emergency contact.",
+    "exampleThai": "เก็บเบอร์โทรศัพท์ของฉันไว้เป็นผู้ติดต่อฉุกเฉิน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Create",
+    "pos": "verb",
+    "phonetic": "ครี-เอท",
+    "thai": "สร้างสรรค์",
+    "example": "Artists create unique works from imagination.",
+    "exampleThai": "ศิลปินสร้างสรรค์ผลงานที่ไม่เหมือนใครจากจินตนาการ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Culture",
+    "pos": "noun",
+    "phonetic": "คัล-เชอร์",
+    "thai": "วัฒนธรรม",
+    "example": "Learning about another culture enriches one's life.",
+    "exampleThai": "การเรียนรู้เกี่ยวกับวัฒนธรรมอื่นช่วยเพิ่มพูนชีวิต",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Current",
+    "pos": "adj",
+    "phonetic": "เคอร์-เรนต์",
+    "thai": "ปัจจุบัน",
+    "example": "What is your current mailing address?",
+    "exampleThai": "ที่อยู่จัดส่งปัจจุบันของคุณคืออะไร",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Definite",
+    "pos": "adj",
+    "phonetic": "เดฟ-ฟิ-นิต",
+    "thai": "แน่นอน, ชัดเจน",
+    "example": "We need a definite answer by Monday.",
+    "exampleThai": "เราต้องการคำตอบที่แน่นอนภายในวันจันทร์",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Detail",
+    "pos": "noun",
+    "phonetic": "ดี-เทล",
+    "thai": "รายละเอียด",
+    "example": "Pay attention to every detail in the design.",
+    "exampleThai": "ใส่ใจในทุกรายละเอียดในการออกแบบ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Device",
+    "pos": "noun",
+    "phonetic": "ดี-ไวส์",
+    "thai": "อุปกรณ์",
+    "example": "Keep your mobile device fully charged.",
+    "exampleThai": "ชาร์จอุปกรณ์มือถือของคุณให้เต็มอยู่เสมอ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Direct",
+    "pos": "adj",
+    "phonetic": "ดิ-เรกต์",
+    "thai": "โดยตรง",
+    "example": "This train provides a direct route to airport.",
+    "exampleThai": "รถไฟขบวนนี้ให้บริการเส้นทางโดยตรงไปยังสนามบิน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Disaster",
+    "pos": "noun",
+    "phonetic": "ดิ-ซาส-เทอร์",
+    "thai": "ภัยพิบัติ",
+    "example": "The emergency team responded to the natural disaster.",
+    "exampleThai": "ทีมฉุกเฉินรับมือกับภัยพิบัติธรรมชาติ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Discuss",
+    "pos": "verb",
+    "phonetic": "ดิส-คัส",
+    "thai": "พูดคุย, ถกเถียง",
+    "example": "Let us discuss options in our next call.",
+    "exampleThai": "ให้เราพูดคุยเกี่ยวกับตัวเลือกในการโทรครั้งต่อไป",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Encounter",
+    "pos": "verb",
+    "phonetic": "เอ็น-เคาน์-เทอร์",
+    "thai": "เผชิญหน้า, พบเจอ",
+    "example": "You may encounter unexpected challenges ahead.",
+    "exampleThai": "คุณอาจเผชิญหน้ากับความท้าทายที่ไม่คาดคิดข้างหน้า",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Encourage",
+    "pos": "verb",
+    "phonetic": "เอ็น-เคอ-เรจ",
+    "thai": "ให้กำลังใจ, สนับสนุน",
+    "example": "Parents encourage children to read daily.",
+    "exampleThai": "พ่อแม่อุดหนุนให้กำลังใจลูกๆ อ่านหนังสือทุกวัน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Environment",
+    "pos": "noun",
+    "phonetic": "เอ็น-ไว-รอน-เมนต์",
+    "thai": "สิ่งแวดล้อม",
+    "example": "A positive work environment boosts output.",
+    "exampleThai": "สภาพแวดล้อมการทำงานที่เป็นบวกช่วยเพิ่มผลงาน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Essential",
+    "pos": "adj",
+    "phonetic": "อิ-เซน-เชียล",
+    "thai": "จำเป็นอย่างยิ่ง",
+    "example": "Water is essential for life sustainability.",
+    "exampleThai": "น้ำเป็นสิ่งจำเป็นอย่างยิ่งต่อความยั่งยืนของชีวิต",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Exceed",
+    "pos": "verb",
+    "phonetic": "อิก-ซีด",
+    "thai": "เกินกว่า",
+    "example": "Do not exceed the posted speed limit.",
+    "exampleThai": "อย่าเกินขีดจำกัดความเร็วที่ระบุไว้",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Feature",
+    "pos": "noun",
+    "phonetic": "ฟี-เจอร์",
+    "thai": "คุณสมบัติ, ลักษณะเด่น",
+    "example": "This phone boasts a waterproof feature.",
+    "exampleThai": "โทรศัพท์รุ่นนี้มีคุณสมบัติกันน้ำเป็นจุดเด่น",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Focus",
+    "pos": "verb",
+    "phonetic": "โฟ-กัส",
+    "thai": "เน้น, สมาธิ",
+    "example": "Focus on the main objectives first.",
+    "exampleThai": "ให้เน้นที่วัตถุประสงค์หลักเป็นอันดับแรก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Highlight",
+    "pos": "verb",
+    "phonetic": "ไฮ-ไลต์",
+    "thai": "เน้นย้ำ",
+    "example": "Highlight key points using yellow color.",
+    "exampleThai": "เน้นย้ำประเด็นสำคัญโดยใช้สีเหลือง",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Individual",
+    "pos": "noun",
+    "phonetic": "อิน-ดิ-วิ-ดวล",
+    "thai": "บุคคล",
+    "example": "Each individual brings unique skills onboard.",
+    "exampleThai": "แต่ละบุคคลนำทักษะเฉพาะตัวมาร่วมงาน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Intense",
+    "pos": "adj",
+    "phonetic": "อิน-เทนส์",
+    "thai": "เข้มข้น, รุนแรง",
+    "example": "Athletes endured intense workout training sessions.",
+    "exampleThai": "นักกีฬาทนต่อการฝึกซ้อมออกกำลังกายอย่างเข้มข้น",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Issue",
+    "pos": "noun",
+    "phonetic": "อิช-ชู",
+    "thai": "ประเด็น, ปัญหา",
+    "example": "Discuss the budget issue in depth.",
+    "exampleThai": "พูดคุยประเด็นงบประมาณอย่างลึกซึ้ง",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Label",
+    "pos": "noun",
+    "phonetic": "เล-เบิล",
+    "thai": "ฉลาก",
+    "example": "Check package nutrition label for details.",
+    "exampleThai": "ตรวจสอบฉลากโภชนาการบนบรรจุภัณฑ์เพื่อดูรายละเอียด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "License",
+    "pos": "noun",
+    "phonetic": "ไล-เซนส์",
+    "thai": "ใบอนุญาต",
+    "example": "Ensure driving license remains fully valid.",
+    "exampleThai": "ตรวจสอบให้แน่ใจว่าใบขับขี่ของคุณยังคงใช้งานได้สมบูรณ์",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Mature",
+    "pos": "adj",
+    "phonetic": "มะ-ชัวร์",
+    "thai": "เติบโตเต็มที่, มีผู้ใหญ่",
+    "example": "The technology matured over two decades.",
+    "exampleThai": "เทคโนโลยีนี้เติบโตเต็มที่ตลอดสองทศวรรษ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Media",
+    "pos": "noun",
+    "phonetic": "มี-เดีย",
+    "thai": "สื่อ",
+    "example": "Social media impacts brand visibility greatly.",
+    "exampleThai": "โซเชียลมีเดียส่งผลกระทบต่อการมองเห็นแบรนด์อย่างมาก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Mental",
+    "pos": "adj",
+    "phonetic": "เมน-ทัล",
+    "thai": "ทางจิตใจ",
+    "example": "Mental fitness is as vital as physical.",
+    "exampleThai": "สมรรถภาพทางจิตใจมีความสำคัญเท่ากับทางกายภาพ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Obvious",
+    "pos": "adj",
+    "phonetic": "ออบ-วี-อัส",
+    "thai": "ชัดเจน, ประจักษ์",
+    "example": "The benefit became obvious after testing.",
+    "exampleThai": "ประโยชน์กลายเป็นสิ่งที่ชัดเจนหลังจากได้รับการทดสอบ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Occupy",
+    "pos": "verb",
+    "phonetic": "อ็อก-คิว-ปาย",
+    "thai": "ครอบครอง, อยู่ใน",
+    "example": "Tenants occupy the building floor space.",
+    "exampleThai": "ผู้เช่าครอบครองพื้นที่ชั้นของอาคาร",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Option",
+    "pos": "noun",
+    "phonetic": "ออป-ชัน",
+    "thai": "ทางเลือก",
+    "example": "Consider every option before finalizing choices.",
+    "exampleThai": "พิจารณาทางเลือกทุกทางก่อนที่จะสรุปการเลือก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Period",
+    "pos": "noun",
+    "phonetic": "พี-เรียด",
+    "thai": "ระยะเวลา, งวด",
+    "example": "The trial period lasts for thirty days.",
+    "exampleThai": "ระยะเวลาทดลองใช้งานนานสามสิบวัน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Portion",
+    "pos": "noun",
+    "phonetic": "พอร์-ชัน",
+    "thai": "ส่วน, แบ่ง",
+    "example": "Divide dessert into four equal portions.",
+    "exampleThai": "แบ่งขนมหวานออกเป็นสี่ส่วนเท่าๆ กัน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Preserve",
+    "pos": "verb",
+    "phonetic": "พรี-เสิร์ฟ",
+    "thai": "อนุรักษ์, สงวนไว้",
+    "example": "Efforts preserve historic heritage sites locally.",
+    "exampleThai": "ความพยายามอนุรักษ์สถานที่มรดกทางประวัติศาสตร์ในท้องถิ่น",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Pursue",
+    "pos": "verb",
+    "phonetic": "เพอร์-ซู",
+    "thai": "ไล่ตาม, ดำเนินการ",
+    "example": "Students pursue higher education goals relentlessly.",
+    "exampleThai": "นักเรียนไล่ตามเป้าหมายการศึกษาระดับอุดมศึกษาอย่างไม่ย่อท้อ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Range",
+    "pos": "noun",
+    "phonetic": "เรนจ์",
+    "thai": "ขอบเขต, ช่วง",
+    "example": "The shop offers a wide range.",
+    "exampleThai": "ร้านค้าเสนอสินค้าที่มีให้เลือกอย่างหลากหลาย",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Recent",
+    "pos": "adj",
+    "phonetic": "รี-เซนต์",
+    "thai": "เมื่อเร็วๆ นี้",
+    "example": "Check recent updates on project dashboard.",
+    "exampleThai": "ตรวจสอบการอัปเดตเมื่อเร็วๆ นี้บนแดชบอร์ดโครงการ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Recommend",
+    "pos": "verb",
+    "phonetic": "เรก-คัม-เมนด์",
+    "thai": "แนะนำ",
+    "example": "I recommend trying local dishes here.",
+    "exampleThai": "ฉันแนะนำให้ลองชิมอาหารท้องถิ่นที่นี่",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Region",
+    "pos": "noun",
+    "phonetic": "รี-จัน",
+    "thai": "ภูมิภาค",
+    "example": "The northern region experiences cooler temperatures.",
+    "exampleThai": "ภูมิภาคทางเหนือมีอุณหภูมิที่เย็นกว่า",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Release",
+    "pos": "verb",
+    "phonetic": "รี-ลีส",
+    "thai": "ปล่อย, เผยแพร่",
+    "example": "Publishers release new media titles monthly.",
+    "exampleThai": "สำนักพิมพ์เผยแพร่สื่อใหม่ๆ เป็นประจำทุกเดือน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Reluctant",
+    "pos": "adj",
+    "phonetic": "รี-ลัก-แทนท์",
+    "thai": "ลังเล, ไม่เต็มใจ",
+    "example": "He was reluctant to sign the document.",
+    "exampleThai": "เขาลังเลที่จะลงนามในเอกสาร",
+    "level": "C1-C2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Rely",
+    "pos": "verb",
+    "phonetic": "รี-ไล",
+    "thai": "พึ่งพา, ไว้วางใจ",
+    "example": "Teams rely on clear internal lines.",
+    "exampleThai": "ทีมพึ่งพาการสื่อสารภายในที่ชัดเจน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Remain",
+    "pos": "verb",
+    "phonetic": "รี-เมน",
+    "thai": "ยังคงอยู่",
+    "example": "Stay calm and remain in your seats.",
+    "exampleThai": "ทำใจให้สงบและยังคงอยู่ที่นั่งของคุณ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Remove",
+    "pos": "verb",
+    "phonetic": "รี-มูฟ",
+    "thai": "เอาออก",
+    "example": "Remove unused applications from memory space.",
+    "exampleThai": "เอาแอปพลิเคชันที่ไม่ใช้งานออกจากพื้นที่หน่วยความจำ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Reside",
+    "pos": "verb",
+    "phonetic": "รี-ไซด์",
+    "thai": "อยู่อาศัย",
+    "example": "Citizens reside within designated municipality zones.",
+    "exampleThai": "พลเมืองอยู่อาศัยภายในเขตเทศบาลที่กำหนด",
+    "level": "C1-C2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Restrain",
+    "pos": "verb",
+    "phonetic": "รี-สเทรน",
+    "thai": "ยับยั้ง, ควบคุม",
+    "example": "Police act to restrain aggressive crowd movement.",
+    "exampleThai": "ตำรวจดำเนินการยับยั้งการเคลื่อนไหวของฝูงชนที่ก้าวร้าว",
+    "level": "C1-C2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Reverse",
+    "pos": "verb",
+    "phonetic": "รี-เวิร์ส",
+    "thai": "ย้อนกลับ, กลับทิศทาง",
+    "example": "Press undo to reverse previous formatting actions.",
+    "exampleThai": "กดเลิกทำเพื่อย้อนกลับการดำเนินการจัดรูปแบบก่อนหน้า",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Role",
+    "pos": "noun",
+    "phonetic": "โรล",
+    "thai": "บทบาท",
+    "example": "Every member plays a key role.",
+    "exampleThai": "สมาชิกทุกคนมีบทบาทสำคัญ",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Route",
+    "pos": "noun",
+    "phonetic": "รูต",
+    "thai": "เส้นทาง",
+    "example": "GPS maps find fastest driving route.",
+    "exampleThai": "แผนที่ GPS หาเส้นทางขับรถที่เร็วที่สุด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Section",
+    "pos": "noun",
+    "phonetic": "เซก-ชัน",
+    "thai": "ส่วน, แผนก",
+    "example": "Read the security section carefully first.",
+    "exampleThai": "อ่านส่วนความปลอดภัยอย่างระมัดระวังเป็นอันดับแรก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Select",
+    "pos": "verb",
+    "phonetic": "สิ-เลกต์",
+    "thai": "เลือก",
+    "example": "Select item options from product list.",
+    "exampleThai": "เลือกตัวเลือกสินค้าจากรายการผลิตภัณฑ์",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Similar",
+    "pos": "adj",
+    "phonetic": "สิ-มิ-ลาร์",
+    "thai": "คล้ายคลึงกัน",
+    "example": "Both designs feature very similar properties.",
+    "exampleThai": "ทั้งสองดีไซน์มีคุณสมบัติที่คล้ายคลึงกันมาก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Site",
+    "pos": "noun",
+    "phonetic": "ไซต์",
+    "thai": "สถานที่, เว็บไซต์",
+    "example": "Visit our web site for details.",
+    "exampleThai": "เยี่ยมชมเว็บไซต์ของเราเพื่อดูรายละเอียด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Stress",
+    "pos": "noun",
+    "phonetic": "สเตรส",
+    "thai": "ความเครียด, การเน้นย้ำ",
+    "example": "Exercise relieves daily work mental stress.",
+    "exampleThai": "การออกกำลังกายช่วยบรรเทาความเครียดจากการทำงานประจำวัน",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Substitute",
+    "pos": "verb",
+    "phonetic": "ซับ-สติ-ทิวต์",
+    "thai": "ทดแทน",
+    "example": "Substitute healthy ingredients in cooking recipes.",
+    "exampleThai": "ใช้ส่วนผสมเพื่อสุขภาพทดแทนในสูตรการทำอาหาร",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Supplement",
+    "pos": "noun",
+    "phonetic": "ซับ-พลี-เมนต์",
+    "thai": "ส่วนเสริม, อาหารเสริม",
+    "example": "Take daily vitamin supplement for health.",
+    "exampleThai": "รับประทานอาหารเสริมวิตามินประจำวันเพื่อสุขภาพ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Survive",
+    "pos": "verb",
+    "phonetic": "เซอร์-ไวฟ์",
+    "thai": "อยู่รอด",
+    "example": "Plants survive harsh desert climate conditions.",
+    "exampleThai": "พืชอยู่รอดในสภาพภูมิอากาศทะเลทรายที่เลวร้าย",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Symbol",
+    "pos": "noun",
+    "phonetic": "ซิม-โบล",
+    "thai": "สัญลักษณ์",
+    "example": "Heart shape is a symbol love.",
+    "exampleThai": "รูปหัวใจเป็นสัญลักษณ์แห่งความรัก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Task",
+    "pos": "noun",
+    "phonetic": "ทาสก์",
+    "thai": "ภารกิจ, งาน",
+    "example": "Complete assigned coding task before noon.",
+    "exampleThai": "ทำงานเขียนโค้ดที่ได้รับมอบหมายให้เสร็จก่อนเที่ยง",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Technology",
+    "pos": "noun",
+    "phonetic": "เทก-โน-โล-จี",
+    "thai": "เทคโนโลยี",
+    "example": "Modern technology improves communication speed drastically.",
+    "exampleThai": "เทคโนโลยีสมัยใหม่ช่วยปรับปรุงความเร็วในการสื่อสารอย่างมาก",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Temporary",
+    "pos": "adj",
+    "phonetic": "เทม-โพ-ระ-รี",
+    "thai": "ชั่วคราว",
+    "example": "This fix is only a temporary option.",
+    "exampleThai": "การแก้ไขนี้เป็นเพียงตัวเลือกชั่วคราวเท่านั้น",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Text",
+    "pos": "noun",
+    "phonetic": "เท็กสต์",
+    "thai": "ข้อความ",
+    "example": "Read main text content for details.",
+    "exampleThai": "อ่านเนื้อหาข้อความหลักเพื่อดูรายละเอียด",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Tradition",
+    "pos": "noun",
+    "phonetic": "ทระ-ดิ-ชัน",
+    "thai": "ประเพณี",
+    "example": "Local festivals celebrate rich cultural traditions.",
+    "exampleThai": "เทศกาลท้องถิ่นเฉลิมฉลองประเพณีทางวัฒนธรรมที่รุ่มรวย",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Transport",
+    "pos": "noun",
+    "phonetic": "แตรนส์-พอร์ต",
+    "thai": "การขนส่ง",
+    "example": "Public transport cuts city traffic jams.",
+    "exampleThai": "การขนส่งสาธารณะช่วยลดปัญหาการจราจรติดขัดในเมือง",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Ultimate",
+    "pos": "adj",
+    "phonetic": "อัล-ทิ-เมต",
+    "thai": "ที่สุด, ขั้นสุด",
+    "example": "Winning gold is her ultimate career goal.",
+    "exampleThai": "การคว้าเหรียญทองคือเป้าหมายขั้นสุดในอาชีพของเธอ",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Understand",
+    "pos": "verb",
+    "phonetic": "อัน-เดอร์-สแตนด์",
+    "thai": "เข้าใจ",
+    "example": "I understand your concerns regarding costs.",
+    "exampleThai": "ฉันเข้าใจข้อกังวลของคุณเกี่ยวกับค่าใช้จ่าย",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Unique",
+    "pos": "adj",
+    "phonetic": "ยู-นีก",
+    "thai": "มีเอกลักษณ์",
+    "example": "Each piece features a unique handcraft style.",
+    "exampleThai": "แต่ละชิ้นมีสไตล์งานฝีมือที่มีเอกลักษณ์เฉพาะตัว",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Valid",
+    "pos": "adj",
+    "phonetic": "แว-ลิด",
+    "thai": "มีผลสมบูรณ์, ฟังขึ้น",
+    "example": "Ensure passport remains valid before travel.",
+    "exampleThai": "ตรวจสอบให้แน่ใจว่าหนังสือเดินทางยังคงมีผลสมบูรณ์ก่อนเดินทาง",
+    "level": "B1-B2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Vehicle",
+    "pos": "noun",
+    "phonetic": "เว-ฮิ-เคิล",
+    "thai": "ยานพาหนะ",
+    "example": "Electric vehicle adoption expands globally now.",
+    "exampleThai": "การใช้ยานพาหนะไฟฟ้าขยายตัวทั่วโลกในขณะนี้",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Visible",
+    "pos": "adj",
+    "phonetic": "วิ-สิ-เบิล",
+    "thai": "มองเห็นได้",
+    "example": "Stars remain visible under clear skies.",
+    "exampleThai": "ท้องฟ้าที่แจ่มใสยังคงมองเห็นดาวได้",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Accomplish",
+    "pos": "verb",
+    "phonetic": "อะ-คอม-พลิช",
+    "thai": "ทำสำเร็จ",
+    "example": "She worked hard to accomplish her goals.",
+    "exampleThai": "เธอทำงานหนักเพื่อทำเป้าหมายให้สำเร็จ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Accounting",
+    "pos": "noun",
+    "phonetic": "อะ-เคาต์-ทิง",
+    "thai": "การบัญชี",
+    "example": "He works in the accounting department.",
+    "exampleThai": "เขาทำงานในแผนกบัญชี",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Acquisition",
+    "pos": "noun",
+    "phonetic": "แอ็ก-ควิ-ซิ-ชัน",
+    "thai": "การเข้าซื้อกิจการ",
+    "example": "The acquisition of the company was completed.",
+    "exampleThai": "การเข้าซื้อกิจการของบริษัทได้เสร็จสมบูรณ์แล้ว",
+    "level": "C1-C2",
+    "category": "Business"
+  },
+  {
+    "word": "Administer",
+    "pos": "verb",
+    "phonetic": "แอ็ด-มิ-นิ-สเทอร์",
+    "thai": "บริหารจัดการ",
+    "example": "She will administer the new project.",
+    "exampleThai": "เธอจะบริหารจัดการโครงการใหม่",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Advertisement",
+    "pos": "noun",
+    "phonetic": "แอ็ด-เวอ-ไทส์-เมนต์",
+    "thai": "การโฆษณา",
+    "example": "The advertisement attracted many new customers.",
+    "exampleThai": "การโฆษณาดึงดูดลูกค้าใหม่จำนวนมาก",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Agenda",
+    "pos": "noun",
+    "phonetic": "อะ-เจน-ดา",
+    "thai": "วาระการประชุม",
+    "example": "Let us review the meeting agenda.",
+    "exampleThai": "ให้เรามาสอบทานวาระการประชุมกัน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Agreement",
+    "pos": "noun",
+    "phonetic": "อะ-กรี-เมนต์",
+    "thai": "ข้อตกลง",
+    "example": "Both parties signed the formal agreement.",
+    "exampleThai": "ทั้งสองฝ่ายได้ลงนามในข้อตกลงอย่างเป็นทางการ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Allocate",
+    "pos": "verb",
+    "phonetic": "แอล-โล-เคต",
+    "thai": "จัดสรร",
+    "example": "We need to allocate funds for marketing.",
+    "exampleThai": "เราจำเป็นต้องจัดสรรเงินทุนสำหรับการตลาด",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Analyze",
+    "pos": "verb",
+    "phonetic": "แอน-นะ-ไลซ์",
+    "thai": "วิเคราะห์",
+    "example": "Analysts analyze market trends carefully.",
+    "exampleThai": "นักวิเคราะห์วิเคราะห์แนวโน้มตลาดอย่างระมัดระวัง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Applicant",
+    "pos": "noun",
+    "phonetic": "แอ็พ-พลิ-แคนต์",
+    "thai": "ผู้สมัคร",
+    "example": "The applicant submitted a strong resume.",
+    "exampleThai": "ผู้สมัครส่งเรซูเม่ที่มีประวัติน่าสนใจ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Application",
+    "pos": "noun",
+    "phonetic": "แอ็พ-พลิ-เคชัน",
+    "thai": "ใบสมัคร, การประยุกต์ใช้",
+    "example": "Please complete your job application online.",
+    "exampleThai": "กรอกใบสมัครงานของคุณทางออนไลน์ให้เรียบร้อย",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Appointment",
+    "pos": "noun",
+    "phonetic": "แอ็พ-พอยนต์-เมนต์",
+    "thai": "การนัดหมาย",
+    "example": "I have an appointment with the client at 2 PM.",
+    "exampleThai": "ฉันมีนัดหมายกับลูกค้าตอนบ่ายสองโมง",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Appraisal",
+    "pos": "noun",
+    "phonetic": "อะ-เพร-ซัล",
+    "thai": "การประเมินผล",
+    "example": "Annual performance appraisal starts next week.",
+    "exampleThai": "การประเมินผลการทำงานประจำปีจะเริ่มต้นในสัปดาห์หน้า",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Asset",
+    "pos": "noun",
+    "phonetic": "แอ็ส-เซ็ต",
+    "thai": "สินทรัพย์",
+    "example": "Employees are the company's most valuable asset.",
+    "exampleThai": "พนักงานคือสินทรัพย์ที่มีค่าที่สุดของบริษัท",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Auditor",
+    "pos": "noun",
+    "phonetic": "ออ-ดิ-เทอร์",
+    "thai": "ผู้ตรวจสอบบัญชี",
+    "example": "The auditor checked all financial records.",
+    "exampleThai": "ผู้ตรวจสอบบัญชีได้ตรวจสอบบันทึกทางการเงินทั้งหมด",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Benefit",
+    "pos": "noun",
+    "phonetic": "เบ-เน-ฟิต",
+    "thai": "สวัสดิการ, ประโยชน์",
+    "example": "Health insurance is a key employee benefit.",
+    "exampleThai": "ประกันสุขภาพเป็นสวัสดิการพนักงานที่สำคัญ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Bonus",
+    "pos": "noun",
+    "phonetic": "โบ-นัส",
+    "thai": "เงินโบนัส",
+    "example": "Staff received a year-end performance bonus.",
+    "exampleThai": "พนักงานได้รับโบนัสผลการทำงานสิ้นปี",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Brand",
+    "pos": "noun",
+    "phonetic": "แบรนด์",
+    "thai": "ตราสินค้า",
+    "example": "Building a strong brand takes time.",
+    "exampleThai": "การสร้างตราสินค้าที่แข็งแกร่งต้องใช้เวลา",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Budget",
+    "pos": "noun",
+    "phonetic": "บัด-เจ็ต",
+    "thai": "งบประมาณ",
+    "example": "The project was completed under budget.",
+    "exampleThai": "โครงการนี้เสร็จสิ้นภายในงบประมาณที่กำหนด",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Candidate",
+    "pos": "noun",
+    "phonetic": "แคน-ดิ-เดต",
+    "thai": "ผู้สมัครรับเลือก",
+    "example": "The candidate showed great potential.",
+    "exampleThai": "ผู้สมัครแสดงให้เห็นถึงศักยภาพที่ยอดเยี่ยม",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Career",
+    "pos": "noun",
+    "phonetic": "คะ-เรียร์",
+    "thai": "อาชีพ, อาชีวการงาน",
+    "example": "She built a successful career in finance.",
+    "exampleThai": "เธอสร้างอาชีพที่ประสบความสำเร็จในด้านการเงิน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Client",
+    "pos": "noun",
+    "phonetic": "ไคล-เอนต์",
+    "thai": "ลูกค้า",
+    "example": "We are meeting an important client today.",
+    "exampleThai": "วันนี้พวกเรากำลังจะพบกับลูกค้ารายสำคัญ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Collaborate",
+    "pos": "verb",
+    "phonetic": "คอล-แล-โบ-เรต",
+    "thai": "ร่วมมือ",
+    "example": "Teams collaborate to solve complex problems.",
+    "exampleThai": "ทีมงานร่วมมือกันเพื่อแก้ปัญหาที่ซับซ้อน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Colleague",
+    "pos": "noun",
+    "phonetic": "คอล-ลีค",
+    "thai": "เพื่อนร่วมงาน",
+    "example": "My colleague assisted me with the report.",
+    "exampleThai": "เพื่อนร่วมงานของฉันช่วยฉันทำรายงาน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Commission",
+    "pos": "noun",
+    "phonetic": "คัม-มิ-ชัน",
+    "thai": "ค่านายหน้า",
+    "example": "Sales reps earn a commission on every sale.",
+    "exampleThai": "ตัวแทนขายได้รับค่านายหน้าจากทุกการขาย",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Commitment",
+    "pos": "noun",
+    "phonetic": "คัม-มิต-เมนต์",
+    "thai": "ข้อผูกมัด, ความมุ่งมั่น",
+    "example": "Demonstrate strong commitment to quality.",
+    "exampleThai": "แสดงให้เห็นถึงความมุ่งมั่นอย่างแรงกล้าต่อคุณภาพ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Compensation",
+    "pos": "noun",
+    "phonetic": "คอม-เพน-เซ-ชัน",
+    "thai": "ค่าตอบแทน",
+    "example": "The compensation package includes stock options.",
+    "exampleThai": "แพ็กเกจค่าตอบแทนรวมถึงสิทธิการซื้อหุ้น",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Competent",
+    "pos": "adj",
+    "phonetic": "คอม-พี-เทนต์",
+    "thai": "มีความสามารถ",
+    "example": "She is a highly competent manager.",
+    "exampleThai": "เธอเป็นผู้จัดการที่มีความสามารถสูงมาก",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Compliance",
+    "pos": "noun",
+    "phonetic": "คอม-ไพล-เอนส์",
+    "thai": "การปฏิบัติตามกฎระเบียบ",
+    "example": "Ensure full compliance with regulations.",
+    "exampleThai": "รับประกันการปฏิบัติตามกฎระเบียบอย่างเคร่งครัด",
+    "level": "C1-C2",
+    "category": "Business"
+  },
+  {
+    "word": "Contract",
+    "pos": "noun",
+    "phonetic": "คอน-แทร็กต์",
+    "thai": "สัญญา",
+    "example": "Read the contract thoroughly before signing.",
+    "exampleThai": "อ่านสัญญาให้ถี่ถ้วนก่อนลงนาม",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Contribution",
+    "pos": "noun",
+    "phonetic": "คอน-ทริ-บิว-ชัน",
+    "thai": "การมีส่วนร่วม, การสนับสนุน",
+    "example": "His contribution to the project was vital.",
+    "exampleThai": "การมีส่วนร่วมของเขาในโครงการนี้มีความสำคัญยิ่ง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Corporate",
+    "pos": "adj",
+    "phonetic": "คอร์-โพ-เรต",
+    "thai": "เกี่ยวกับองค์กร",
+    "example": "Corporate policy requires strict security protocols.",
+    "exampleThai": "นโยบายองค์กรกำหนดให้มีมาตรการความปลอดภัยที่เข้มงวด",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Deadline",
+    "pos": "noun",
+    "phonetic": "เดด-ไลน์",
+    "thai": "กำหนดส่งงาน",
+    "example": "We must finish this before the deadline.",
+    "exampleThai": "พวกเราต้องทำสิ่งนี้ให้เสร็จก่อนกำหนดส่งงาน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Delegate",
+    "pos": "verb",
+    "phonetic": "เด-ลิ-เกต",
+    "thai": "มอบหมายงาน",
+    "example": "Managers should delegate tasks effectively.",
+    "exampleThai": "ผู้จัดการควรมอบหมายงานอย่างมีประสิทธิภาพ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Department",
+    "pos": "noun",
+    "phonetic": "ดี-พาร์ต-เมนต์",
+    "thai": "แผนก",
+    "example": "She was promoted to department head.",
+    "exampleThai": "เธอได้รับการเลื่อนตำแหน่งเป็นหัวหน้าแผนก",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Efficiency",
+    "pos": "noun",
+    "phonetic": "อิ-ฟิ-เชียน-ซี",
+    "thai": "ประสิทธิภาพ",
+    "example": "New software improved operational efficiency.",
+    "exampleThai": "ซอฟต์แวร์ใหม่ช่วยปรับปรุงประสิทธิภาพการดำเนินงาน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Employ",
+    "pos": "verb",
+    "phonetic": "เอ็ม-พลอย",
+    "thai": "ว่าจ้าง",
+    "example": "The company plans to employ more staff.",
+    "exampleThai": "บริษัทวางแผนที่จะว่าจ้างพนักงานเพิ่มขึ้น",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Employee",
+    "pos": "noun",
+    "phonetic": "เอ็ม-พลอย-อี",
+    "thai": "ลูกจ้าง, พนักงาน",
+    "example": "Every employee receives safety training.",
+    "exampleThai": "พนักงานทุกคนได้รับฝึกอบรมความปลอดภัย",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Employer",
+    "pos": "noun",
+    "phonetic": "เอ็ม-พลอย-เออร์",
+    "thai": "นายจ้าง",
+    "example": "The employer provides comprehensive benefits.",
+    "exampleThai": "นายจ้างจัดสรรสวัสดิการที่ครอบคลุม",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Employment",
+    "pos": "noun",
+    "phonetic": "เอ็ม-พลอย-เมนต์",
+    "thai": "การจ้างงาน",
+    "example": "Employment rates rose significantly this quarter.",
+    "exampleThai": "อัตราการจ้างงานเพิ่มขึ้นอย่างมีนัยสำคัญในไตรมาสนี้",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Enterprise",
+    "pos": "noun",
+    "phonetic": "เอน-เทอร์-ไพรส์",
+    "thai": "สถานประกอบการ, องค์กร",
+    "example": "It is a growing commercial enterprise.",
+    "exampleThai": "มันเป็นองค์กรพาณิชย์ที่กำลังเติบโต",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Entrepreneur",
+    "pos": "noun",
+    "phonetic": "ออง-เทร-เพรอ-เนอร์",
+    "thai": "ผู้ประกอบการ",
+    "example": "The young entrepreneur launched a new tech startup.",
+    "exampleThai": "ผู้ประกอบการรุ่นใหม่เปิดตัวสตาร์ทอัพเทคโนโลยีใหม่",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Executive",
+    "pos": "noun",
+    "phonetic": "อิก-เซก-คิว-ทีฟ",
+    "thai": "ผู้บริหาร",
+    "example": "The chief executive approved the budget.",
+    "exampleThai": "ผู้บริหารสูงสุดอนุมัติงบประมาณแล้ว",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Experience",
+    "pos": "noun",
+    "phonetic": "เอ็ก-สพี-รี-เอนส์",
+    "thai": "ประสบการณ์",
+    "example": "He has extensive experience in sales.",
+    "exampleThai": "เขาจะมีประสบการณ์อย่างกว้างขวางในด้านการขาย",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Expertise",
+    "pos": "noun",
+    "phonetic": "เอ็ก-สเปอ-ทีซ",
+    "thai": "ความเชี่ยวชาญ",
+    "example": "Her technical expertise solved the core issue.",
+    "exampleThai": "ความเชี่ยวชาญทางเทคนิคของเธอช่วยแก้ปัญหาหลักได้",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Financial",
+    "pos": "adj",
+    "phonetic": "ไฟ-แนน-เชียล",
+    "thai": "ทางการเงิน",
+    "example": "Review quarterly financial reports carefully.",
+    "exampleThai": "ตรวจสอบรายงานทางการเงินประจำไตรมาสอย่างระมัดระวัง",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Flexible",
+    "pos": "adj",
+    "phonetic": "เฟล็ก-ซิ-เบิล",
+    "thai": "ยืดหยุ่น",
+    "example": "The company offers flexible working hours.",
+    "exampleThai": "บริษัทเสนอเวลาทำงานที่ยืดหยุ่น",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Goal",
+    "pos": "noun",
+    "phonetic": "โกล",
+    "thai": "เป้าหมาย",
+    "example": "Set realistic goals for your team.",
+    "exampleThai": "ตั้งเป้าหมายที่จริงจังและทำได้จริงสำหรับทีมของคุณ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Guideline",
+    "pos": "noun",
+    "phonetic": "ไกด์-ไลน์",
+    "thai": "แนวทางปฏิบัติ",
+    "example": "Follow safety guidelines at all times.",
+    "exampleThai": "ปฏิบัติตามแนวทางปฏิบัติด้านความปลอดภัยอยู่เสมอ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Incentive",
+    "pos": "noun",
+    "phonetic": "อิน-เซน-ทีฟ",
+    "thai": "สิ่งจูงใจ",
+    "example": "Financial incentives boost productivity.",
+    "exampleThai": "สิ่งจูงใจทางการเงินช่วยเพิ่มผลผลิต",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Income",
+    "pos": "noun",
+    "phonetic": "อิน-คัม",
+    "thai": "รายได้",
+    "example": "Monthly income rose after the promotion.",
+    "exampleThai": "รายได้ต่อเดือนเพิ่มขึ้นหลังจากได้รับการเลื่อนตำแหน่ง",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Industry",
+    "pos": "noun",
+    "phonetic": "อิน-ดัส-ตรี",
+    "thai": "อุตสาหกรรม",
+    "example": "The automotive industry faces new changes.",
+    "exampleThai": "อุตสาหกรรมยานยนต์กำลังเผชิญกับการเปลี่ยนแปลงใหม่ๆ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Innovation",
+    "pos": "noun",
+    "phonetic": "อิน-โน-เว-ชัน",
+    "thai": "นวัตกรรม",
+    "example": "Innovation drives long-term success.",
+    "exampleThai": "นวัตกรรมขับเคลื่อนความสำเร็จในระยะยาว",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Internship",
+    "pos": "noun",
+    "phonetic": "อิน-เทิร์น-ชิป",
+    "thai": "การฝึกงาน",
+    "example": "She completed a summer internship.",
+    "exampleThai": "เธอสำเร็จการฝึกงานภาคฤดูร้อน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Interview",
+    "pos": "noun",
+    "phonetic": "อิน-เทอร์-วิว",
+    "thai": "การสัมภาษณ์",
+    "example": "The job interview went very well.",
+    "exampleThai": "การสัมภาษณ์งานดำเนินไปได้ด้วยดี",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Investment",
+    "pos": "noun",
+    "phonetic": "อิน-เวสต์-เมนต์",
+    "thai": "การลงทุน",
+    "example": "Real estate is a stable investment.",
+    "exampleThai": "อสังหาริมทรัพย์เป็นการลงทุนที่มั่นคง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Invoice",
+    "pos": "noun",
+    "phonetic": "อิน-วอยส์",
+    "thai": "ใบแจ้งหนี้",
+    "example": "Send the invoice to accounting immediately.",
+    "exampleThai": "ส่งใบแจ้งหนี้ไปยังฝ่ายบัญชีทันที",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Leadership",
+    "pos": "noun",
+    "phonetic": "ลีด-เดอร์-ชิป",
+    "thai": "ความเป็นผู้นำ",
+    "example": "Effective leadership inspires team members.",
+    "exampleThai": "ความเป็นผู้นำที่มีประสิทธิภาพสร้างแรงบันดาลใจให้สมาชิกในทีม",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Management",
+    "pos": "noun",
+    "phonetic": "แม-เนจ-เมนต์",
+    "thai": "การจัดการ, ฝ่ายบริหาร",
+    "example": "Upper management approved the strategy.",
+    "exampleThai": "ฝ่ายบริหารระดับสูงอนุมัติยุทธศาสตร์แล้ว",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Manager",
+    "pos": "noun",
+    "phonetic": "แม-เนจ-เออร์",
+    "thai": "ผู้จัดการ",
+    "example": "Talk with your line manager regarding leave.",
+    "exampleThai": "พูดคุยกับผู้จัดการสายงานของคุณเกี่ยวกับการลา",
+    "level": "A1-A2",
+    "category": "Daily Life"
+  },
+  {
+    "word": "Manufacturer",
+    "pos": "noun",
+    "phonetic": "แม-นิ-แฟก-เชอ-เรอร์",
+    "thai": "ผู้ผลิต",
+    "example": "The manufacturer supplies parts globally.",
+    "exampleThai": "ผู้ผลิตจัดส่งชิ้นส่วนทั่วโลก",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Marketing",
+    "pos": "noun",
+    "phonetic": "มาร์-เก็ต-ทิง",
+    "thai": "การตลาด",
+    "example": "Digital marketing boosts online sales.",
+    "exampleThai": "การตลาดดิจิทัลช่วยเพิ่มยอดขายออนไลน์",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Meeting",
+    "pos": "noun",
+    "phonetic": "มีต-ทิง",
+    "thai": "การประชุม",
+    "example": "Attend the staff meeting at ten.",
+    "exampleThai": "เข้าร่วมการประชุมพนักงานตอนสิบนกฬิกา",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Merger",
+    "pos": "noun",
+    "phonetic": "เมอร์-เจอร์",
+    "thai": "การควบรวมกิจการ",
+    "example": "The corporate merger created a huge company.",
+    "exampleThai": "การควบรวมกิจการสร้างบริษัทขนาดใหญ่ขึ้น",
+    "level": "C1-C2",
+    "category": "Business"
+  },
+  {
+    "word": "Negotiate",
+    "pos": "verb",
+    "phonetic": "เน-โก-ชิ-เอต",
+    "thai": "เจรจาต่อรอง",
+    "example": "We must negotiate contract terms firmly.",
+    "exampleThai": "พวกเราต้องเจรจาต่อรองเงื่อนไขสัญญาอย่างมั่นคง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Objective",
+    "pos": "noun",
+    "phonetic": "ออบ-เจ็ก-ทีฟ",
+    "thai": "วัตถุประสงค์",
+    "example": "Define key business objectives clearly.",
+    "exampleThai": "กำหนดวัตถุประสงค์ทางธุรกิจหลักให้ชัดเจน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Occupation",
+    "pos": "noun",
+    "phonetic": "อ็อก-คิว-เพ-ชัน",
+    "thai": "อาชีพ",
+    "example": "State your occupation on the form.",
+    "exampleThai": "ระบุอาชีพของคุณลงในแบบฟอร์ม",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Offer",
+    "pos": "noun",
+    "phonetic": "ออฟ-เฟอร์",
+    "thai": "ข้อเสนอ, การเสนอ",
+    "example": "He accepted the employment offer.",
+    "exampleThai": "เขาตอบรับข้อเสนอการจ้างงาน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Opportunity",
+    "pos": "noun",
+    "phonetic": "ออป-พอร์-ทู-นิ-ที",
+    "thai": "โอกาส",
+    "example": "Career growth opportunities exist here.",
+    "exampleThai": "โอกาสการเติบโตในอาชีพการงานมีอยู่ที่นี่",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Organization",
+    "pos": "noun",
+    "phonetic": "ออร์-แก-ไน-เซ-ชัน",
+    "thai": "องค์กร",
+    "example": "Our organization supports sustainable growth.",
+    "exampleThai": "องค์กรของเราสนับสนุนการเติบโตอย่างยั่งยืน",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Outsource",
+    "pos": "verb",
+    "phonetic": "เอาต์-ซอร์ส",
+    "thai": "จัดจ้างภายนอก",
+    "example": "Companies outsource IT maintenance services.",
+    "exampleThai": "บริษัทจัดจ้างภายนอกสำหรับการบริการดูแลระบบไอที",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Overtime",
+    "pos": "noun",
+    "phonetic": "โอ-เวอร์-ไทม์",
+    "thai": "การทำงานล่วงเวลา",
+    "example": "He worked overtime to complete tasks.",
+    "exampleThai": "เขาทำงานล่วงเวลาเพื่อทำงานให้เสร็จ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Partner",
+    "pos": "noun",
+    "phonetic": "พาร์ต-เนอร์",
+    "thai": "หุ้นส่วน",
+    "example": "She is a managing partner at the firm.",
+    "exampleThai": "เธอเป็นหุ้นส่วนผู้จัดการที่บริษัท",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Payroll",
+    "pos": "noun",
+    "phonetic": "เพย์-โรล",
+    "thai": "บัญชีเงินเดือน",
+    "example": "HR handles the monthly staff payroll.",
+    "exampleThai": "ฝ่ายบุคคลจัดการบัญชีเงินเดือนพนักงานประจำเดือน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Pension",
+    "pos": "noun",
+    "phonetic": "เพน-ชัน",
+    "thai": "เงินบำนาญ",
+    "example": "The company provides a solid pension plan.",
+    "exampleThai": "บริษัทให้แผนเงินบำนาญที่มั่นคง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Performance",
+    "pos": "noun",
+    "phonetic": "เพอร์-ฟอร์-แมนส์",
+    "thai": "ผลการทำงาน",
+    "example": "High performance merits promotion.",
+    "exampleThai": "ผลการทำงานที่สูงสมควรได้รับการเลื่อนตำแหน่ง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Personnel",
+    "pos": "noun",
+    "phonetic": "เพอร์-ซอน-เนล",
+    "thai": "บุคลากร",
+    "example": "All personnel must wear identification badges.",
+    "exampleThai": "บุคลากรทุกคนต้องติดบัตรประจำตัว",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Policy",
+    "pos": "noun",
+    "phonetic": "พอ-ลิ-ซี",
+    "thai": "นโยบาย",
+    "example": "Review company remote work policy.",
+    "exampleThai": "สอบทานนโยบายการทำงานระยะไกลของบริษัท",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Position",
+    "pos": "noun",
+    "phonetic": "โพ-ซิ-ชัน",
+    "thai": "ตำแหน่ง",
+    "example": "He applied for a managerial position.",
+    "exampleThai": "เขาลงสมัครตำแหน่งผู้จัดการ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Productivity",
+    "pos": "noun",
+    "phonetic": "โพร-ดัก-ทิ-วิ-ที",
+    "thai": "ผลผลิต, ประสิทธิภาพในการทำงาน",
+    "example": "Flexibility increases overall workplace productivity.",
+    "exampleThai": "ความยืดหยุ่นช่วยเพิ่มประสิทธิภาพในการทำงานโดยรวมในสถานที่ทำงาน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Professional",
+    "pos": "adj",
+    "phonetic": "โพร-เฟส-ชัน-นอล",
+    "thai": "มืออาชีพ",
+    "example": "Always maintain professional conduct.",
+    "exampleThai": "ประพฤติตนอย่างเป็นมืออาชีพอยู่เสมอ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Profit",
+    "pos": "noun",
+    "phonetic": "พรอ-ฟิต",
+    "thai": "กำไร",
+    "example": "Quarterly net profit reached record highs.",
+    "exampleThai": "กำไรสุทธิประจำไตรมาสขึ้นสูงถึงระดับสถิติใหม่",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Promotion",
+    "pos": "noun",
+    "phonetic": "โพร-โม-ชัน",
+    "thai": "การเลื่อนตำแหน่ง, การส่งเสริมการขาย",
+    "example": "Hard work earned her a promotion.",
+    "exampleThai": "การทำงานหนักทำให้เธอได้รับการเลื่อนตำแหน่ง",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Proposal",
+    "pos": "noun",
+    "phonetic": "โพร-โพ-ซัล",
+    "thai": "ข้อเสนอโครงการ",
+    "example": "Submit your project proposal by Friday.",
+    "exampleThai": "ส่งข้อเสนอโครงการของคุณภายในวันศุกร์",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Qualification",
+    "pos": "noun",
+    "phonetic": "ควอ-ลิ-ฟิ-เค-ชัน",
+    "thai": "คุณสมบัติ",
+    "example": "Academic qualifications are carefully reviewed.",
+    "exampleThai": "คุณสมบัติทางวิชาการได้รับการตรวจสอบอย่างละเอียด",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Recruiter",
+    "pos": "noun",
+    "phonetic": "รี-ครูต-เทอร์",
+    "thai": "ผู้สรรหาบุคลากร",
+    "example": "The recruiter contacted suitable applicants.",
+    "exampleThai": "ผู้สรรหาบุคลากรติดต่อไปยังผู้สมัครที่เหมาะสม",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Requirement",
+    "pos": "noun",
+    "phonetic": "รี-ไควร์-เมนต์",
+    "thai": "ข้อกำหนด, คุณสมบัติที่ต้องมี",
+    "example": "Fluency in English is a key requirement.",
+    "exampleThai": "ความคล่องแคล่วในภาษาอังกฤษเป็นข้อกำหนดสำคัญ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Resign",
+    "pos": "verb",
+    "phonetic": "รี-ไซน์",
+    "thai": "ลาออก",
+    "example": "He decided to resign from his position.",
+    "exampleThai": "เขาตัดสินใจที่จะลาออกจากตำแหน่งของเขา",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Resource",
+    "pos": "noun",
+    "phonetic": "รี-ซอร์ส",
+    "thai": "ทรัพยากร",
+    "example": "Allocate human resources efficiently.",
+    "exampleThai": "จัดสรรทรัพยากรบุคคลอย่างมีประสิทธิภาพ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Responsibility",
+    "pos": "noun",
+    "phonetic": "รี-สพอน-สิ-บิ-ลิ-ที",
+    "thai": "ความรับผิดชอบ",
+    "example": "Managing the budget is her responsibility.",
+    "exampleThai": "การจัดการงบประมาณเป็นความรับผิดชอบของเธอ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Restructure",
+    "pos": "verb",
+    "phonetic": "รี-สทรัค-เชอร์",
+    "thai": "ปรับโครงสร้าง",
+    "example": "Management decided to restructure operations.",
+    "exampleThai": "ฝ่ายบริหารตัดสินใจปรับโครงสร้างการดำเนินงาน",
+    "level": "C1-C2",
+    "category": "Business"
+  },
+  {
+    "word": "Resume",
+    "pos": "noun",
+    "phonetic": "เร-ซู-เม",
+    "thai": "ประวัติย่อการทำงาน",
+    "example": "Attach your updated resume to the email.",
+    "exampleThai": "แนบประวัติย่อการทำงานที่อัปเดตของคุณมาในอีเมล",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Revenue",
+    "pos": "noun",
+    "phonetic": "เร-เวอ-นิว",
+    "thai": "รายได้องค์กร",
+    "example": "Annual company revenue grew significantly.",
+    "exampleThai": "รายได้ประจำปีของบริษัทเติบโตอย่างมีนัยสำคัญ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Salary",
+    "pos": "noun",
+    "phonetic": "แซ-ละ-รี",
+    "thai": "เงินเดือน",
+    "example": "Negotiate competitive starting salary package.",
+    "exampleThai": "เจรจาแพ็กเกจเงินเดือนเริ่มต้นที่แข่งขันได้",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Schedule",
+    "pos": "noun",
+    "phonetic": "สเก-จูล",
+    "thai": "ตารางเวลา",
+    "example": "Keep to the project delivery schedule.",
+    "exampleThai": "ปฏิบัติตามตารางเวลาการส่งมอบโครงการ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Shareholder",
+    "pos": "noun",
+    "phonetic": "แชร์-โฮล-เดอร์",
+    "thai": "ผู้ถือหุ้น",
+    "example": "Shareholders voted on the merger proposal.",
+    "exampleThai": "ผู้ถือหุ้นลงมติเกี่ยวกับข้อเสนอการควบรวมกิจการ",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Skill",
+    "pos": "noun",
+    "phonetic": "สิล",
+    "thai": "ทักษะ",
+    "example": "Continuous learning expands your skill set.",
+    "exampleThai": "การเรียนรู้อย่างต่อเนื่องขยายชุดทักษะของคุณ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Staff",
+    "pos": "noun",
+    "phonetic": "สตาฟ",
+    "thai": "คณะผู้ทำงาน, พนักงาน",
+    "example": "All staff attended mandatory compliance training.",
+    "exampleThai": "พนักงานทุกคนเข้าร่วมการฝึกอบรมการปฏิบัติตามกฎระเบียบที่บังคับ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Strategy",
+    "pos": "noun",
+    "phonetic": "สแตร-เทอ-จี",
+    "thai": "กลยุทธ์",
+    "example": "Develop a long-term business strategy.",
+    "exampleThai": "พัฒนากลยุทธ์ทางธุรกิจระยะยาว",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Supervisor",
+    "pos": "noun",
+    "phonetic": "ซู-เปอร์-ไว-เซอร์",
+    "thai": "ผู้คุมงาน, หัวหน้างาน",
+    "example": "Report safety incidents to your supervisor.",
+    "exampleThai": "รายงานอุบัติเหตุความปลอดภัยต่อหัวหน้างานของคุณ",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Supplier",
+    "pos": "noun",
+    "phonetic": "ซัพ-ไพล-เออร์",
+    "thai": "ผู้จัดหาวัตถุดิบ",
+    "example": "The supplier delivered raw materials today.",
+    "exampleThai": "ผู้จัดหาวัตถุดิบได้ส่งมอบวัตถุดิบในวันนี้",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Target",
+    "pos": "noun",
+    "phonetic": "ทาร์-เก็ต",
+    "thai": "เป้าหมาย",
+    "example": "Sales team met quarterly performance targets.",
+    "exampleThai": "ทีมขายบรรลุเป้าหมายผลการทำงานประจำไตรมาส",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Task",
+    "pos": "noun",
+    "phonetic": "ทาสก์",
+    "thai": "งานที่ได้รับมอบหมาย",
+    "example": "Assign daily tasks to team members.",
+    "exampleThai": "มอบหมายงานประจำวันให้กับสมาชิกในทีม",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Urgent",
+    "pos": "adj",
+    "phonetic": "เออร์-เจนต์",
+    "thai": "เร่งด่วน",
+    "example": "This matter requires urgent executive attention.",
+    "exampleThai": "เรื่องนี้ต้องการความสนใจเร่งด่วนจากผู้บริหาร",
+    "level": "A1-A2",
+    "category": "Business"
+  },
+  {
+    "word": "Vacancy",
+    "pos": "noun",
+    "phonetic": "เว-เคน-ซี",
+    "thai": "ตำแหน่งว่าง",
+    "example": "Our department has a job vacancy.",
+    "exampleThai": "แผนกของเรามีตำแหน่งงานว่าง",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Workflow",
+    "pos": "noun",
+    "phonetic": "เวิร์ก-โฟล",
+    "thai": "ขั้นตอนการทำงาน",
+    "example": "Automation streamlines complex daily workflow.",
+    "exampleThai": "ระบบอัตโนมัติช่วยจัดระเบียบขั้นตอนการทำงานประจำวันที่ซับซ้อน",
+    "level": "B1-B2",
+    "category": "Business"
+  },
+  {
+    "word": "Workplace",
+    "pos": "noun",
+    "phonetic": "เวิร์ก-เพลส",
+    "thai": "สถานที่ทำงาน",
+    "example": "Maintain a healthy and safe workplace.",
+    "exampleThai": "รักษาสถานที่ทำงานให้มีความปลอดภัยและถูกสุขลักษณะ",
+    "level": "A1-A2",
+    "category": "Business"
+  }
+]
