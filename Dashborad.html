@@ -571,16 +571,12 @@
             const reasonDurations = {};
             logs.forEach(log => {
                 const type = (log.type || '').toUpperCase().trim();
-                if (type.includes('DOWNTIME') || type.includes('INCIDENT')) {
-                    const reason = log.detail || 'ไม่ระบุ';
-                    if (!reasonCounts[reason]) {
-                        reasonCounts[reason] = 0;
-                        reasonDurations[reason] = 0;
-                    }
-                    reasonCounts[reason] += 1;
-                    if (log.duration && log.duration !== '-') {
-                        reasonDurations[reason] += parseDurationToMinutes(log.duration);
-                    }
+                const reason = log.detail || 'ไม่ระบุ';
+                if (type === 'INCIDENT') {
+                    reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
+                }
+                if (log.duration && log.duration !== '-') {
+                    reasonDurations[reason] = (reasonDurations[reason] || 0) + parseDurationToMinutes(log.duration);
                 }
             });
 
@@ -705,5 +701,3 @@
 </body>
 
 </html>
-
-
