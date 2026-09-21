@@ -617,7 +617,7 @@
             }
             let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
             const rate = totalWorkSeconds > 0 ? ((totalDowntimeSeconds / totalWorkSeconds) * 100).toFixed(1) : 0;
-            const incidentCount = logs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT').length;
+            const incidentCount = logs.filter(l => l.type === 'INCIDENT').length;
             csvContent += "=== ภาพรวมระบบ (System Summary) ===\n";
             csvContent += `"เวลาทำงานรวม (Total Work)",${formatTime(totalWorkSeconds)}\n`;
             csvContent += `"เวลาหยุดชะงัก (Total Downtime)",${formatTime(totalDowntimeSeconds)}\n`;
