@@ -512,7 +512,7 @@
             document.getElementById('kpiDowntimeRate').textContent = `${rate} %`;
             document.getElementById('kpiProgressBar').style.width = `${Math.min(rate, 100)}%`;
 
-            const incidentCount = logs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT').length;
+            const incidentCount = logs.filter(l => l.type === 'INCIDENT').length;
             document.getElementById('kpiIncidentCount').textContent = `${incidentCount} ครั้ง`;
         }
 
