@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Work & Downtime Analytics Dashboard</title>
+
+    <!-- Tailwind CSS CDN -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts: Prompt & Sarabun -->
+
+    <link rel="preconnect" href="[suspicious link removed]">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Chart.js CDN -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+        body {
+
+            font-family: 'Sarabun', sans-serif;
+
+        }
+
+        h1, h2, h3, h4, .font-heading {
+
+            font-family: 'Prompt', sans-serif;
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
+
+    <!-- Header Section -->
+
+    <header class="bg-slate-900 text-white shadow-md">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+
+            <div class="flex items-center space-x-3">
+
+                <div class="p-2 bg-indigo-600 rounded-lg">
+
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <h1 class="text-xl font-bold tracking-wide">แดชบอร์ดวิเคราะห์ผล Downtime & Productivity</h1>
+
+                    <p class="text-xs text-slate-400">CSV Data Analytics & Performance Reporting System</p>
+
+                </div>
+
+            </div>
+
+            <div class="flex items-center gap-3">
+
+                <label for="csvFileInput" class="cursor-pointer px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition duration-150 flex items-center gap-2">
+
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+
+                    </svg>
+
+                    <span>อัปโหลดไฟล์ CSV</span>
+                    
+
+                </label>
+
+                <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleFileUpload(event)">
+
+                <button id="btnShiftToggle" onclick="window.location.href='Productivity.html';" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition duration-150 flex items-center gap-2">
+                    <span>Productivity</span>
+                </button>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-6">
+
+        <!-- File Upload Drag & Drop Dropzone (Visible when no file uploaded) -->
+
+        <section id="uploadSection" class="bg-white p-8 rounded-xl shadow-sm border-2 border-dashed border-slate-300 text-center">
+
+            <div class="max-w-md mx-auto space-y-4">
+
+                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto">
+
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+
+                    </svg>
+
+                </div>
+
+                <h2 class="text-lg font-bold text-slate-800">นำเข้าไฟล์ข้อมูล CSV</h2>
+
+                <p class="text-sm text-slate-500">เลือกไฟล์ CSV ที่ส่งออก (Exported) จากระบบ Work & Downtime Tracker เพื่อประมวลผลตารางและสรุปกราฟ</p>
+
+                <label for="csvFileInputMain" class="inline-block px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow cursor-pointer transition">
+
+                    เลือกไฟล์ CSV จากเครื่อง
+
+                </label>
+
+                <input type="file" id="csvFileInputMain" accept=".csv" class="hidden" onchange="handleFileUpload(event)">
+
+            </div>
+
+        </section>
+
+        <!-- Dashboard Content (Hidden initially until file uploaded) -->
+
+        <div id="dashboardContainer" class="hidden space-y-6">
+
+            <!-- Summary KPI Cards -->
+
+            <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+
+                    <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">เวลาทำงานรวม (Total Work)</p>
+
+                    <h3 class="text-2xl font-bold text-slate-800 mt-2 font-mono" id="kpiTotalWork">-</h3>
+
+                    <p class="text-xs text-slate-400 mt-1">เวลาปฏิบัติงานทั้งหมด</p>
+
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+
+                    <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">เวลาหยุดชะงัก (Total Downtime)</p>
+
+                    <h3 class="text-2xl font-bold text-amber-600 mt-2 font-mono" id="kpiTotalDowntime">-</h3>
+
+                    <p class="text-xs text-slate-400 mt-1">เวลาเครื่องจักรขัดข้องสะสม</p>
+
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+
+                    <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">สัดส่วน Downtime (%)</p>
+
+                    <h3 class="text-2xl font-bold text-slate-800 mt-2 font-mono" id="kpiDowntimeRate">-</h3>
+
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 mt-2">
+
+                        <div id="kpiProgressBar" class="bg-amber-500 h-1.5 rounded-full" style="width: 0%"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+
+                    <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">จำนวนเหตุการณ์ (Incidents)</p>
+
+                    <h3 class="text-2xl font-bold text-indigo-600 mt-2 font-mono" id="kpiIncidentCount">-</h3>
+
+                    <p class="text-xs text-slate-400 mt-1">จำนวนรายการหยุดชะงักทั้งหมด</p>
+
+                </div>
+
+            </section>
+
+            <!-- Analytics Charts Section -->
+
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- Chart 1: Incidents Count by Reason -->
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+
+                    <h3 class="text-base font-bold text-slate-800 mb-4 flex items-center justify-between">
+
+                        <span>จำนวนครั้งแบ่งตามสาเหตุ (Incident Frequency)</span>
+
+                    </h3>
+
+                    <div class="relative h-64">
+
+                        <canvas id="incidentReasonChart"></canvas>
+
+                    </div>
+
+                </div>
+
+                <!-- Chart 2: Downtime Duration by Reason -->
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+
+                    <h3 class="text-base font-bold text-slate-800 mb-4 flex items-center justify-between">
+
+                        <span>ระยะเวลา Downtime รวมแบ่งตามสาเหตุ (นาที)</span>
+
+                    </h3>
+
+                    <div class="relative h-64">
+
+                        <canvas id="durationReasonChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Data Table Section -->
+
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+
+                <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+
+                    <div>
+
+                        <h2 class="text-lg font-bold text-slate-800">รายการ Log ที่นำเข้า (Imported Event Logs)</h2>
+
+                        <p class="text-xs text-slate-500" id="logRecordCount">แสดงข้อมูลทั้งหมด 0 รายการ</p>
+
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+
+                        <input type="text" id="searchInput" oninput="filterLogs()" placeholder="ค้นหาประเภท, สาเหตุ..." class="px-3 py-1.5 bg-slate-50 border border-slate-300 rounded-lg text-xs w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full text-left text-sm text-slate-600">
+
+                        <thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+
+                            <tr>
+
+                                <th class="px-6 py-3">ลำดับ</th>
+
+                                <th class="px-6 py-3">เวลา (Timestamp)</th>
+
+                                <th class="px-6 py-3">ประเภทรายการ</th>
+
+                                <th class="px-6 py-3">รายละเอียด / สาเหตุ</th>
+
+                                <th class="px-6 py-3 text-right">ระยะเวลา (Duration)</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="logTableBody" class="divide-y divide-slate-100">
+
+                            <!-- Dynamic Content -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        let parsedSummary = {};
+
+        let parsedLogs = [];
+
+        let filteredLogs = [];
+
+        let incidentChartInstance = null;
+
+        let durationChartInstance = null;
+
+        function handleFileUpload(event) {
+
+            const file = event.target.files[0];
+
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                const text = e.target.result;
+
+                processCSVData(text);
+
+            };
+
+            reader.readAsText(file, 'UTF-8');
+
+        }
+
+        function processCSVData(csvText) {
+
+            const lines = csvText.split(/\r?\n/);
+
+            parsedSummary = {};
+
+            parsedLogs = [];
+
+            let isLogHeaderFound = false;
+
+            for (let i = 0; i < lines.length; i++) {
+
+                const line = lines[i].trim();
+
+                if (!line) continue;
+
+                if (line.includes('Timestamp,Type,Detail,Duration')) {
+
+                    isLogHeaderFound = true;
+
+                    continue;
+
+                }
+
+                if (!isLogHeaderFound) {
+
+                    // Extract system summary line
+
+                    if (line.includes('เวลาทำงานรวม')) {
+
+                        parsedSummary.totalWork = extractValueFromCsvLine(line);
+
+                    } else if (line.includes('เวลาหยุดชะงัก')) {
+
+                        parsedSummary.totalDowntime = extractValueFromCsvLine(line);
+
+                    } else if (line.includes('สัดส่วน Downtime')) {
+
+                        parsedSummary.downtimeRate = extractValueFromCsvLine(line);
+
+                    } else if (line.includes('จำนวนเหตุการณ์')) {
+
+                        parsedSummary.incidentCount = extractValueFromCsvLine(line);
+
+                    }
+
+                } else {
+
+                    // Parse log row
+
+                    const columns = parseCsvRow(line);
+
+                    if (columns.length >= 4) {
+
+                        parsedLogs.push({
+
+                            timestamp: columns[0],
+
+                            type: columns[1],
+
+                            detail: columns[2],
+
+                            duration: columns[3]
+
+                        });
+
+                    }
+
+                }
+
+            }
+
+            // Show Dashboard
+
+            document.getElementById('uploadSection').classList.add('hidden');
+
+            document.getElementById('dashboardContainer').classList.remove('hidden');
+
+            renderKPIs();
+
+            renderTable(parsedLogs);
+
+            renderCharts(parsedLogs);
+
+        }
+
+        function extractValueFromCsvLine(line) {
+
+            const parts = line.split(',');
+
+            if (parts.length >= 2) {
+
+                return parts[1].replace(/"/g, '').trim();
+
+            }
+
+            return '-';
+
+        }
+
+        function parseCsvRow(rowText) {
+
+            const result = [];
+
+            let current = '';
+
+            let inQuotes = false;
+
+            for (let i = 0; i < rowText.length; i++) {
+
+                const char = rowText[i];
+
+                if (char === '"') {
+
+                    inQuotes = !inQuotes;
+
+                } else if (char === ',' && !inQuotes) {
+
+                    result.push(current.trim());
+
+                    current = '';
+
+                } else {
+
+                    current += char;
+
+                }
+
+            }
+
+            result.push(current.trim());
+
+            return result;
+
+        }
+
+        function renderKPIs() {
+
+            document.getElementById('kpiTotalWork').textContent = parsedSummary.totalWork || '00:00:00';
+
+            document.getElementById('kpiDowntimeRate').textContent = parsedSummary.downtimeRate || '0.0 %';
+
+            document.getElementById('kpiIncidentCount').textContent = parsedSummary.incidentCount || `${parsedLogs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT').length} ครั้ง`;
+
+            const rateNum = parseFloat(parsedSummary.downtimeRate) || 0;
+
+            document.getElementById('kpiProgressBar').style.width = `${Math.min(rateNum, 100)}%`;
+
+        }
+
+        function renderTable(logs) {
+
+            filteredLogs = logs;
+
+            const tbody = document.getElementById('logTableBody');
+
+            document.getElementById('logRecordCount').textContent = `แสดงข้อมูลทั้งหมด ${logs.length} รายการ`;
+
+            if (logs.length === 0) {
+
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-slate-400">ไม่พบข้อมูลในระบบ</td></tr>';
+
+                return;
+
+            }
+
+            tbody.innerHTML = logs.map((log, index) => {
+
+                let badgeStyle = 'bg-slate-100 text-slate-700';
+
+                if (log.type === 'DOWNTIME START') badgeStyle = 'bg-amber-100 text-amber-800';
+
+                if (log.type === 'DOWNTIME END') badgeStyle = 'bg-emerald-100 text-emerald-800';
+
+                if (log.type === 'INCIDENT') badgeStyle = 'bg-indigo-100 text-indigo-800';
+
+                if (log.type === 'SYSTEM') badgeStyle = 'bg-slate-200 text-slate-800';
+
+                return `
+
+                    <tr class="hover:bg-slate-50 transition">
+
+                        <td class="px-6 py-3.5 text-xs text-slate-400 font-mono">${index + 1}</td>
+
+                        <td class="px-6 py-3.5 font-mono text-xs text-slate-500">${log.timestamp}</td>
+
+                        <td class="px-6 py-3.5"><span class="px-2.5 py-1 rounded-full text-xs font-semibold ${badgeStyle}">${log.type}</span></td>
+
+                        <td class="px-6 py-3.5 font-medium text-slate-800">${log.detail}</td>
+
+                        <td class="px-6 py-3.5 text-right font-mono text-xs text-slate-600">${log.duration}</td>
+
+                    </tr>
+
+                `;
+
+            }).join('');
+
+        }
+
+        function filterLogs() {
+
+            const query = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = parsedLogs.filter(log => 
+
+                log.type.toLowerCase().includes(query) ||
+
+                log.detail.toLowerCase().includes(query) ||
+
+                log.timestamp.toLowerCase().includes(query)
+
+            );
+
+            renderTable(filtered);
+
+        }
+
+        function parseDurationToMinutes(durationStr) {
+
+            if (!durationStr || durationStr === '-') return 0;
+
+            const parts = durationStr.split(':');
+
+            if (parts.length === 3) {
+
+                const h = parseInt(parts[0], 10) || 0;
+
+                const m = parseInt(parts[1], 10) || 0;
+
+                const s = parseInt(parts[2], 10) || 0;
+
+                return Math.round((h * 60 + m + s / 60) * 10) / 10;
+
+            }
+
+            return 0;
+
+        }
+
+        function renderCharts(logs) {
+
+            const reasonCounts = {};
+
+            const reasonDurations = {};
+
+            logs.forEach(log => {
+
+                if (log.type === 'DOWNTIME START' || log.type === 'INCIDENT' || log.type === 'DOWNTIME END') {
+
+                    const reason = log.detail || 'ไม่ระบุ';
+
+                    if (!reasonCounts[reason]) {
+
+                        reasonCounts[reason] = 0;
+
+                        reasonDurations[reason] = 0;
+
+                    }
+
+                    if (log.type === 'DOWNTIME START' || log.type === 'INCIDENT') {
+
+                        reasonCounts[reason] += 1;
+
+                    }
+
+                    if (log.duration && log.duration !== '-') {
+
+                        reasonDurations[reason] += parseDurationToMinutes(log.duration);
+
+                    }
+
+                }
+
+            });
+
+            const labels = Object.keys(reasonCounts);
+
+            const countData = Object.values(reasonCounts);
+
+            const durationData = labels.map(l => reasonDurations[l] || 0);
+
+            // Chart 1: Incident Count Bar/Pie
+
+            if (incidentChartInstance) incidentChartInstance.destroy();
+
+            const ctx1 = document.getElementById('incidentReasonChart').getContext('2d');
+
+            incidentChartInstance = new Chart(ctx1, {
+
+                type: 'bar',
+
+                data: {
+
+                    labels: labels.length > 0 ? labels : ['ไม่มีข้อมูล'],
+
+                    datasets: [{
+
+                        label: 'จำนวนครั้ง',
+
+                        data: countData.length > 0 ? countData : [0],
+
+                        backgroundColor: 'rgba(79, 70, 229, 0.85)',
+
+                        borderColor: 'rgba(79, 70, 229, 1)',
+
+                        borderWidth: 1,
+
+                        borderRadius: 6
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: { display: false }
+
+                    },
+
+                    scales: {
+
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+
+                    }
+
+                }
+
+            });
+
+            // Chart 2: Downtime Duration Bar
+
+            if (durationChartInstance) durationChartInstance.destroy();
+
+            const ctx2 = document.getElementById('durationReasonChart').getContext('2d');
+
+            durationChartInstance = new Chart(ctx2, {
+
+                type: 'bar',
+
+                data: {
+
+                    labels: labels.length > 0 ? labels : ['ไม่มีข้อมูล'],
+
+                    datasets: [{
+
+                        label: 'ระยะเวลา (นาที)',
+
+                        data: durationData.length > 0 ? durationData : [0],
+
+                        backgroundColor: 'rgba(217, 119, 6, 0.85)',
+
+                        borderColor: 'rgba(217, 119, 6, 1)',
+
+                        borderWidth: 1,
+
+                        borderRadius: 6
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: { display: false }
+
+                    },
+
+                    scales: {
+
+                        y: { beginAtZero: true }
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
