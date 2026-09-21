@@ -85,7 +85,6 @@
                     </svg>
 
                     <span>อัปโหลดไฟล์ CSV</span>
-                    
 
                 </label>
 
@@ -462,9 +461,18 @@
 
             document.getElementById('kpiTotalWork').textContent = parsedSummary.totalWork || '00:00:00';
 
+            const downtimeLogs = parsedLogs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT' || l.type === 'DOWNTIME END');
+            let totalDowntimeMin = 0;
+            downtimeLogs.forEach(l => { if (l.duration && l.duration !== '-') totalDowntimeMin += parseDurationToMinutes(l.duration); });
+            const dtHours = Math.floor(totalDowntimeMin / 60);
+            const dtMinutes = Math.floor(totalDowntimeMin % 60);
+            const dtSeconds = Math.round((totalDowntimeMin - Math.floor(totalDowntimeMin)) * 60);
+            const formattedDowntime = `${String(dtHours).padStart(2, '0')}:${String(dtMinutes).padStart(2, '0')}:${String(dtSeconds).padStart(2, '0')}`;
+            document.getElementById('kpiTotalDowntime').textContent = parsedSummary.totalDowntime || formattedDowntime;
+
             document.getElementById('kpiDowntimeRate').textContent = parsedSummary.downtimeRate || '0.0 %';
 
-            document.getElementById('kpiIncidentCount').textContent = parsedSummary.incidentCount || `${parsedLogs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT').length} ครั้ง`;
+            document.getElementById('kpiIncidentCount').textContent = parsedSummary.incidentCount || `${parsedLogs.filter(l => l.type === 'DOWNTIME START' || l.type === 'INCIDENT').length} ครั้ง  iajdijiejsoifjseifjsieofj`;
 
             const rateNum = parseFloat(parsedSummary.downtimeRate) || 0;
 
@@ -541,61 +549,39 @@
         }
 
         function parseDurationToMinutes(durationStr) {
-
+            if (!durationStr || durationStr === '-' || durationStr === '0') return 0;
             if (!durationStr || durationStr === '-') return 0;
-
+            if (!isNaN(durationStr)) return parseFloat(durationStr);
             const parts = durationStr.split(':');
-
             if (parts.length === 3) {
-
                 const h = parseInt(parts[0], 10) || 0;
-
                 const m = parseInt(parts[1], 10) || 0;
-
                 const s = parseInt(parts[2], 10) || 0;
-
-                return Math.round((h * 60 + m + s / 60) * 10) / 10;
-
+                return Math.round((h * 60 + m + s / 60) * 100) / 100;
+            } else if (parts.length === 2) {
+                const m = parseInt(parts[0], 10) || 0;
+                const s = parseInt(parts[1], 10) || 0;
+                return Math.round((m + s / 60) * 100) / 100;
             }
-
-            return 0;
-
+            return parseFloat(durationStr) || 0;
         }
 
         function renderCharts(logs) {
-
             const reasonCounts = {};
-
             const reasonDurations = {};
-
             logs.forEach(log => {
-
-                if (log.type === 'DOWNTIME START' || log.type === 'INCIDENT' || log.type === 'DOWNTIME END') {
-
+                const type = (log.type || '').toUpperCase().trim();
+                if (type.includes('DOWNTIME') || type.includes('INCIDENT')) {
                     const reason = log.detail || 'ไม่ระบุ';
-
                     if (!reasonCounts[reason]) {
-
                         reasonCounts[reason] = 0;
-
                         reasonDurations[reason] = 0;
-
                     }
-
-                    if (log.type === 'DOWNTIME START' || log.type === 'INCIDENT') {
-
-                        reasonCounts[reason] += 1;
-
-                    }
-
+                    reasonCounts[reason] += 1;
                     if (log.duration && log.duration !== '-') {
-
                         reasonDurations[reason] += parseDurationToMinutes(log.duration);
-
                     }
-
                 }
-
             });
 
             const labels = Object.keys(reasonCounts);
@@ -719,3 +705,5 @@
 </body>
 
 </html>
+
+
