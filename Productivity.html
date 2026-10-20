@@ -1,26 +1,20 @@
 <!DOCTYPE html>
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work & Downtime Tracker</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Work &amp; Downtime Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Fonts: Prompt & Sarabun -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;family=Sarabun:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-        }
-        h1, h2, h3, h4, .font-heading {
-            font-family: 'Prompt', sans-serif;
-        }
+        body { font-family: 'Sarabun', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Prompt', sans-serif; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen pb-12">
-
-    <!-- Header Section -->
     <header class="bg-slate-900 text-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -31,11 +25,9 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-bold tracking-wide">ระบบจับเวลาทำงานและติดตาม Downtime</h1>
-<p class="text-xs text-slate-400">Workstation Monitoring & Incident Logging System</p>
+                    <p class="text-xs text-slate-400">Workstation Monitoring &amp; Incident Logging System</p>
                 </div>
             </div>
-
-<!-- Status Badge & Main Controls -->
             <div class="flex items-center gap-4">
                 <div class="flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800 border border-slate-700" id="statusContainer">
                     <span class="w-2.5 h-2.5 rounded-full bg-slate-400 mr-2" id="statusDot"></span>
@@ -47,29 +39,24 @@
                 <button id="btnResetAll" onclick="resetAllData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium rounded-lg shadow transition duration-150 flex items-center gap-2">
                     <span>รีเซ็ตข้อมูลทั้งหมด</span>
                 </button>
-                <button id="btnShiftToggle" onclick="window.location.href='Dashborad.html';" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition duration-150 flex items-center gap-2">
+                <button id="btnDashboard" onclick="window.location.href='Dashboard.html';" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition duration-150 flex items-center gap-2">
                     <span>Dashboard</span>
                 </button>
             </div>
         </div>
     </header>
-
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-6">
-
-        <!-- Dashboard KPI Cards -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                 <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">เวลาทำงานรวม (Total Work)</p>
                 <h3 class="text-2xl font-bold text-slate-800 mt-2 font-mono" id="kpiTotalWork">00:00:00</h3>
                 <p class="text-xs text-slate-400 mt-1">เวลาหลักเดินตลอดกะ</p>
             </div>
-
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                 <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">เวลาหยุดชะงัก (Total Downtime)</p>
                 <h3 class="text-2xl font-bold text-slate-700 mt-2 font-mono" id="kpiTotalDowntime">00:00:00</h3>
                 <p class="text-xs text-slate-400 mt-1">สะสมช่วงเครื่องขัดข้อง</p>
             </div>
-
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                 <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">สัดส่วน Downtime (%)</p>
                 <h3 class="text-2xl font-bold text-slate-800 mt-2 font-mono" id="kpiDowntimeRate">0.0 %</h3>
@@ -77,22 +64,17 @@
                     <div id="kpiProgressBar" class="bg-indigo-500 h-1.5 rounded-full" style="width: 0%"></div>
                 </div>
             </div>
-
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                 <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">จำนวนเหตุการณ์ (Incidents)</p>
                 <h3 class="text-2xl font-bold text-slate-800 mt-2 font-mono" id="kpiIncidentCount">0 ครั้ง</h3>
                 <p class="text-xs text-slate-400 mt-1">รายการเหตุการณ์ทั้งหมด</p>
             </div>
         </section>
-
-<!-- Main Timer & Downtime Action Controls -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Work & Downtime Dual Timers Display -->
             <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
                 <div>
                     <h2 class="text-lg font-bold text-slate-800 border-b pb-3">ระบบตัวจับเวลาปัจจุบัน (Live Timers)</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 my-6">
-                        <!-- Main Work Timer Card -->
                         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">เวลาการทำงานกะปัจจุบัน</span>
                             <div class="text-4xl font-extrabold text-slate-800 my-3 font-mono" id="displayMainTimer">00:00:00</div>
@@ -101,8 +83,6 @@
                                 สถานะ: <span id="mainTimerStatusText" class="ml-1 font-medium">ยังไม่เริ่มงาน</span>
                             </span>
                         </div>
-
-                        <!-- Downtime Live Timer Card -->
                         <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center" id="downtimeCard">
                             <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">เวลา Downtime รอบปัจจุบัน</span>
                             <div class="text-4xl font-extrabold text-slate-400 my-3 font-mono" id="displayDowntimeTimer">00:00:00</div>
@@ -116,8 +96,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Downtime Controls -->
                 <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-100">
                     <button id="btnStartDT" onclick="startDowntimeDirect()" disabled class="flex-1 min-w-[140px] px-5 py-2.5 bg-slate-700 hover:bg-slate-800 disabled:opacity-50 text-white font-medium rounded-lg shadow-sm transition duration-150 flex items-center justify-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -129,60 +107,41 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Quick Incident Log Buttons -->
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
                 <h2 class="text-lg font-bold text-slate-800 border-b pb-3 mb-4">บันทึกเหตุการณ์ด่วน (Quick Incident)</h2>
                 <p class="text-xs text-slate-500 mb-4">กดเพื่อบันทึกเหตุการณ์ฉุกเฉินลงในตาราง Log โดยทันที</p>
-
                 <div class="grid grid-cols-1 gap-2.5 flex-1">
-    <!-- 1. Gripper Error -->
-    <button onclick="logQuickIncident('Gripper Error')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Gripper Error (มือจับขัดข้อง)</span>
-        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-    </button>
-
-    <!-- 2. Manual Stop -->
-    <button onclick="logQuickIncident('Manual Stop')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Manual Stop (ช่างหยุดเครื่อง)</span>
-        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-    </button>
-
-    <!-- 3. Abnormal Operation -->
-    <button onclick="logQuickIncident('Abnormal Operation')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Abnormal Operation (พบสิ่งผิดปกติ/เสียงดัง/สั่น)</span>
-        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-    </button>
-
-                    <!-- 4. Pending Reject Removal (หัวข้อที่เพิ่มใหม่) -->
+                    <button onclick="logQuickIncident('Gripper Error')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Gripper Error (มือจับขัดข้อง)</span>
+                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+                    </button>
+                    <button onclick="logQuickIncident('Manual Stop')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Manual Stop (ช่างหยุดเครื่อง)</span>
+                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+                    </button>
+                    <button onclick="logQuickIncident('Abnormal Operation')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Abnormal Operation (พบสิ่งผิดปกติ/เสียงดัง/สั่น)</span>
+                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+                    </button>
                     <button onclick="logQuickIncident('Pending Reject Removal')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
                         <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Pending Reject Removal (รองานเสียออก)</span>
                         <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
                     </button>
-
-                    <!-- 5. Setup / Changeover (หัวข้อที่เพิ่มใหม่) -->
                     <button onclick="logQuickIncident('Setup / Changeover')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
                         <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Setup / Changeover (ปรับแต่งตั้งค่า)</span>
                         <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
                     </button>
-
-                    <!-- 6. Material Shortage -->
                     <button onclick="logQuickIncident('Material Shortage')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
                         <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Material Shortage (รอวัตถุดิบ/กล่อง/พาเลท)</span>
                         <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
                     </button>
-
-                    <!-- 7. Others (หัวข้อที่เพิ่มใหม่) -->
                     <button onclick="logQuickIncident('Others')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
                         <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Others (อื่นๆ)</span>
                         <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
                     </button>
                 </div>
-
             </div>
         </section>
-
-        <!-- Event Log Table Section -->
         <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center">
                 <div>
@@ -192,12 +151,11 @@
                 <div class="flex items-center gap-3">
                     <button onclick="exportCSV()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition duration-150 flex items-center gap-1.5 shadow-sm">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        <span>Download CSV</span>
+                        <span>Download Excel</span>
                     </button>
                     <button onclick="clearLogs()" class="text-xs text-slate-400 hover:text-slate-600 underline">ล้างข้อมูล Log</button>
                 </div>
             </div>
-
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm text-slate-600">
                     <thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
@@ -205,6 +163,7 @@
                             <th class="px-6 py-3">เวลา (Timestamp)</th>
                             <th class="px-6 py-3">ประเภทรายการ</th>
                             <th class="px-6 py-3">สาเหตุ</th>
+                            <th class="px-6 py-3 text-center">รูปภาพ</th>
                             <th class="px-6 py-3">รายละเอียด</th>
                             <th class="px-6 py-3 text-right">ระยะเวลา (Duration)</th>
                             <th class="px-6 py-3 text-center">จัดการ</th>
@@ -212,21 +171,17 @@
                     </thead>
                     <tbody id="eventLogTable" class="divide-y divide-slate-100">
                         <tr id="emptyLogRow">
-                            <td colspan="6" class="px-6 py-8 text-center text-slate-400">ยังไม่มีข้อมูลบันทึกในระบบ</td>
+                            <td colspan="7" class="px-6 py-8 text-center text-slate-400">ยังไม่มีข้อมูลบันทึกในระบบ</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
-
     </main>
-
-    <!-- Modal: Select Downtime Reason -->
     <div id="downtimeModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center hidden z-50">
         <div class="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md p-6 m-4">
             <h3 class="text-lg font-bold text-slate-800 border-b pb-3 mb-4" id="modalTitle">ระบุสาเหตุการเกิด Downtime</h3>
-
-            <div class="space-y-4 ">
+            <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">เลือกสาเหตุมาตรฐาน</label>
                     <select id="modalReasonSelect" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
@@ -238,20 +193,21 @@
                         <option value="Others">Others (อื่นๆ ระบุเพิ่มเติมด้านล่าง)</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">รายละเอียดเพิ่มเติม (Option)</label>
                     <input type="text" id="modalReasonDetail" placeholder="เช่น รหัสอะไหล่ หรือหมายเลขพาเลท" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
                 </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">แนบรูปภาพประกอบ</label>
+                    <input type="file" id="modalReasonImage" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 border border-slate-300 rounded-lg bg-slate-50">
+                </div>
             </div>
-
             <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
                 <button onclick="closeDowntimeModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-medium rounded-lg">ยกเลิก</button>
                 <button onclick="confirmUpdateDowntimeReason()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg">บันทึกสาเหตุ</button>
             </div>
         </div>
     </div>
-    <!-- Modal: System Notification / Alert -->
     <div id="alertDialogModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center hidden z-50">
         <div class="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-sm p-6 m-4 text-center">
             <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-4">
@@ -262,7 +218,6 @@
             <button onclick="closeAlertDialogModal()" class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition">ตกลง</button>
         </div>
     </div>
-    <!-- Modal: Edit Log Item -->
     <div id="editLogModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center hidden z-50">
         <div class="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md p-6 m-4">
             <h3 class="text-lg font-bold text-slate-800 border-b pb-3 mb-4">แก้ไขข้อมูล Log</h3>
@@ -287,39 +242,28 @@
             </div>
         </div>
     </div>
-
-    <!-- Vanilla JavaScript Implementation -->
     <script>
-        // System State Variables
         let isShiftActive = false;
         let isDowntime = false;
-
         let totalWorkSeconds = 0;
         let totalDowntimeSeconds = 0;
         let currentDowntimeSeconds = 0;
-
         let shiftStartTimestamp = null;
         let downtimeStartTimestamp = null;
         let mainTimerInterval = null;
         let downtimeTimerInterval = null;
         let currentDowntimeReason = '';
-        let currentDowntimeStartTime = null;
         let logs = [];
-
-        // Formatting Helpers
         function formatTime(totalSec) {
             const hrs = Math.floor(totalSec / 3600);
             const mins = Math.floor((totalSec % 3600) / 60);
             const secs = totalSec % 60;
             return [hrs, mins, secs].map(v => v < 10 ? "0" + v : v).join(":");
         }
-
         function getTimestamp() {
             const now = new Date();
             return now.toLocaleTimeString('th-TH', { hour12: false });
         }
-
-        // Shift Control Toggle
         function toggleShift() {
             const btn = document.getElementById('btnShiftToggle');
             const statusDot = document.getElementById('statusDot');
@@ -328,127 +272,100 @@
             const btnStartDT = document.getElementById('btnStartDT');
             const mainTimerDot = document.getElementById('mainTimerDot');
             const mainTimerStatusText = document.getElementById('mainTimerStatusText');
-
             if (!isShiftActive) {
-                // Start Shift
                 isShiftActive = true;
                 shiftStartTimestamp = Date.now() - (totalWorkSeconds * 1000);
                 btn.textContent = 'สิ้นสุดกะการทำงาน';
                 btn.className = 'px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-lg shadow transition duration-150';
-
                 statusText.textContent = 'NORMAL';
                 statusText.className = 'text-emerald-400 font-bold';
                 statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2';
                 statusContainer.className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/40 border border-emerald-800/50';
-
                 mainTimerDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5';
                 mainTimerStatusText.textContent = 'กำลังทำงานปกติ';
                 mainTimerStatusText.className = 'ml-1 font-medium text-emerald-600';
-
                 btnStartDT.disabled = false;
-
-                // Main timer updates based on real elapsed time
                 mainTimerInterval = setInterval(() => {
                     totalWorkSeconds = Math.floor((Date.now() - shiftStartTimestamp) / 1000);
                     document.getElementById('displayMainTimer').textContent = formatTime(totalWorkSeconds);
                     updateKPIs();
                 }, 500);
-
                 addLogRecord('SYSTEM', 'เริ่มกะการทำงาน (Shift Started)', '-', '-');
             } else {
-                // Stop Shift
-                if (isDowntime) {
-                    endDowntime();
-                }
-
+                if (isDowntime) { endDowntime(); }
                 isShiftActive = false;
                 clearInterval(mainTimerInterval);
-
                 btn.textContent = 'เริ่มกะการทำงาน';
                 btn.className = 'px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow transition duration-150';
-
                 statusText.textContent = 'STOPPED';
                 statusText.className = 'text-slate-300';
                 statusDot.className = 'w-2.5 h-2.5 rounded-full bg-slate-400 mr-2';
                 statusContainer.className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800 border border-slate-700';
-
                 mainTimerDot.className = 'w-2 h-2 rounded-full bg-slate-400 mr-1.5';
                 mainTimerStatusText.textContent = 'หยุดกะการทำงาน';
                 mainTimerStatusText.className = 'ml-1 font-medium text-slate-500';
-
                 btnStartDT.disabled = true;
                 document.getElementById('btnEndDT').disabled = true;
-
                 addLogRecord('SYSTEM', 'จบกะการทำงาน (Shift Ended)', '-', formatTime(totalWorkSeconds));
             }
         }
-
-        // Downtime Modal Controls
         function openDowntimeModal(isEditing = false) {
             if (!isShiftActive && !isEditing) return;
             document.getElementById('modalTitle').textContent = isEditing ? 'แก้ไขสาเหตุ Downtime ปัจจุบัน' : 'ระบุสาเหตุการเกิด Downtime';
             document.getElementById('downtimeModal').classList.remove('hidden');
         }
-
         function closeDowntimeModal() {
             document.getElementById('downtimeModal').classList.add('hidden');
         }
-
         function startDowntimeDirect() {
             if (!isShiftActive || isDowntime) return;
             startDowntime('ยังไม่ระบุสาเหตุ');
         }
-
         function confirmUpdateDowntimeReason() {
             const reasonSelect = document.getElementById('modalReasonSelect').value;
             const reasonDetail = document.getElementById('modalReasonDetail').value;
-            closeDowntimeModal();
-            updateCurrentDowntimeReason(reasonSelect, reasonDetail.trim());
+            const imageInput = document.getElementById('modalReasonImage');
+            if (imageInput && imageInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    closeDowntimeModal();
+                    updateCurrentDowntimeReason(reasonSelect, reasonDetail.trim(), e.target.result);
+                    imageInput.value = '';
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                closeDowntimeModal();
+                updateCurrentDowntimeReason(reasonSelect, reasonDetail.trim(), '-');
+            }
         }
-
-        function updateCurrentDowntimeReason(newReason, newDetail = '') {
+        function updateCurrentDowntimeReason(newReason, newDetail = '', imageName = '-') {
             currentDowntimeReason = newReason;
             document.getElementById('dtCurrentReason').textContent = newDetail ? `${newReason} (${newDetail})` : newReason;
             if (logs.length > 0 && (logs[0].type === 'DOWNTIME START' || logs[0].type === 'INCIDENT')) {
                 logs[0].reason = newReason;
                 logs[0].detail = newDetail || '-';
+                logs[0].image = imageName;
                 renderLogTable();
             }
         }
-
-        // Start Downtime Timer
         function startDowntime(reason) {
             isDowntime = true;
             currentDowntimeReason = reason;
             downtimeStartTimestamp = Date.now();
             currentDowntimeSeconds = 0;
-            currentDowntimeStartTime = getTimestamp();
-
-            // Update UI Status
-            const statusDot = document.getElementById('statusDot');
-            const statusText = document.getElementById('statusText');
-            const statusContainer = document.getElementById('statusContainer');
-
-            statusText.textContent = 'DOWNTIME';
-            statusText.className = 'text-amber-400 font-bold';
-            statusDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping mr-2';
-            statusContainer.className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-950/40 border border-amber-800/50';
-
-            // Button States
+            document.getElementById('statusText').textContent = 'DOWNTIME';
+            document.getElementById('statusText').className = 'text-amber-400 font-bold';
+            document.getElementById('statusDot').className = 'w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping mr-2';
+            document.getElementById('statusContainer').className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-950/40 border border-amber-800/50';
             document.getElementById('btnStartDT').disabled = true;
             document.getElementById('btnEndDT').disabled = false;
             const btnEdit = document.getElementById('btnEditCurrentReason');
             btnEdit.disabled = false;
             btnEdit.classList.remove('hidden');
-
-            // Downtime Card Active Style
-            const dtCard = document.getElementById('downtimeCard');
-            dtCard.className = 'bg-amber-50 p-6 rounded-xl border border-amber-200 text-center';
+            document.getElementById('downtimeCard').className = 'bg-amber-50 p-6 rounded-xl border border-amber-200 text-center';
             document.getElementById('displayDowntimeTimer').className = 'text-4xl font-extrabold text-amber-600 my-3 font-mono';
             document.getElementById('dtTimerDot').className = 'w-2 h-2 rounded-full bg-amber-500 animate-pulse mr-1.5';
             document.getElementById('dtCurrentReason').textContent = reason;
-
-            // Downtime timer updates based on real elapsed time
             const previousDowntimeTotal = totalDowntimeSeconds - currentDowntimeSeconds;
             downtimeTimerInterval = setInterval(() => {
                 currentDowntimeSeconds = Math.floor((Date.now() - downtimeStartTimestamp) / 1000);
@@ -456,49 +373,30 @@
                 document.getElementById('displayDowntimeTimer').textContent = formatTime(currentDowntimeSeconds);
                 updateKPIs();
             }, 500);
-
             addLogRecord('DOWNTIME START', reason, '-', '-');
         }
-
-        // End Downtime Timer
         function endDowntime() {
             if (!isDowntime) return;
-
             isDowntime = false;
             clearInterval(downtimeTimerInterval);
-
-            // Restore UI Status
-            const statusDot = document.getElementById('statusDot');
-            const statusText = document.getElementById('statusText');
-            const statusContainer = document.getElementById('statusContainer');
-
-            statusText.textContent = 'NORMAL';
-            statusText.className = 'text-emerald-400 font-bold';
-            statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2';
-            statusContainer.className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/40 border border-emerald-800/50';
-
-            // Button States
+            document.getElementById('statusText').textContent = 'NORMAL';
+            document.getElementById('statusText').className = 'text-emerald-400 font-bold';
+            document.getElementById('statusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2';
+            document.getElementById('statusContainer').className = 'flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/40 border border-emerald-800/50';
             document.getElementById('btnStartDT').disabled = !isShiftActive;
             document.getElementById('btnEndDT').disabled = true;
             const btnEdit = document.getElementById('btnEditCurrentReason');
             btnEdit.disabled = true;
             btnEdit.classList.add('hidden');
-
-            // Downtime Card Normal Style
-            const dtCard = document.getElementById('downtimeCard');
-            dtCard.className = 'bg-slate-50 p-6 rounded-xl border border-slate-200 text-center';
+            document.getElementById('downtimeCard').className = 'bg-slate-50 p-6 rounded-xl border border-slate-200 text-center';
             document.getElementById('displayDowntimeTimer').className = 'text-4xl font-extrabold text-slate-400 my-3 font-mono';
             document.getElementById('dtTimerDot').className = 'w-2 h-2 rounded-full bg-slate-300 mr-1.5';
-
             addLogRecord('DOWNTIME END', currentDowntimeReason, '-', formatTime(currentDowntimeSeconds));
-
             document.getElementById('dtCurrentReason').textContent = '-';
             currentDowntimeSeconds = 0;
             downtimeStartTimestamp = null;
             document.getElementById('displayDowntimeTimer').textContent = '00:00:00';
         }
-
-        // Quick Incident Logging
         function logQuickIncident(incidentName) {
             if (!isShiftActive) {
                 showAlertDialog('กรุณากดเริ่มกะการทำงานก่อนทำการบันทึกเหตุการณ์');
@@ -506,62 +404,40 @@
             }
             document.getElementById('modalReasonSelect').value = incidentName;
             document.getElementById('modalReasonDetail').value = '';
-            if (!isDowntime) {
-                startDowntime(incidentName);
-            }
+            if (!isDowntime) { startDowntime(incidentName); }
             openDowntimeModal(true);
         }
-
-        // Update Dashboard KPIs
         function updateKPIs() {
             document.getElementById('kpiTotalWork').textContent = formatTime(totalWorkSeconds);
             document.getElementById('kpiTotalDowntime').textContent = formatTime(totalDowntimeSeconds);
-
             const rate = totalWorkSeconds > 0 ? ((totalDowntimeSeconds / totalWorkSeconds) * 100).toFixed(1) : 0;
             document.getElementById('kpiDowntimeRate').textContent = `${rate} %`;
             document.getElementById('kpiProgressBar').style.width = `${Math.min(rate, 100)}%`;
-
             const incidentCount = logs.filter(l => l.type === 'INCIDENT').length;
             document.getElementById('kpiIncidentCount').textContent = `${incidentCount} ครั้ง`;
         }
-
-        // Add Log Entry to Table
-        function addLogRecord(type, reason, detail, duration) {
-            const logItem = { timestamp: getTimestamp(), type: type, reason: reason || '-', detail: detail || '-', duration: duration || '-' };
+        function addLogRecord(type, reason, detail, duration, image = '-') {
+            const logItem = { timestamp: getTimestamp(), type: type, reason: reason || '-', detail: detail || '-', duration: duration || '-', image: image || '-' };
             logs.unshift(logItem);
             renderLogTable();
             updateKPIs();
         }
-
-        // Render Log Table DOM
         function renderLogTable() {
             const tbody = document.getElementById('eventLogTable');
             if (logs.length === 0) {
-                tbody.innerHTML = '<tr id="emptyLogRow"><td colspan="6" class="px-6 py-8 text-center text-slate-400">ยังไม่มีข้อมูลบันทึกในระบบ</td></tr>';
+                tbody.innerHTML = '<tr id="emptyLogRow"><td colspan="7" class="px-6 py-8 text-center text-slate-400">ยังไม่มีข้อมูลบันทึกในระบบ</td></tr>';
                 return;
             }
-
             tbody.innerHTML = logs.map((log, index) => {
                 let badgeStyle = 'bg-slate-100 text-slate-700';
                 if (log.type === 'DOWNTIME START') badgeStyle = 'bg-amber-100 text-amber-800';
                 if (log.type === 'DOWNTIME END') badgeStyle = 'bg-emerald-100 text-emerald-800';
                 if (log.type === 'INCIDENT') badgeStyle = 'bg-indigo-100 text-indigo-800';
                 if (log.type === 'SYSTEM') badgeStyle = 'bg-slate-200 text-slate-800';
-
-                return `
-                    <tr class="hover:bg-slate-50 transition">
-<td class="px-6 py-3.5 font-mono text-xs text-slate-500">${log.timestamp}</td>
-<td class="px-6 py-3.5"><span class="px-2.5 py-1 rounded-full text-xs font-semibold ${badgeStyle}">${log.type}</span></td>
-<td class="px-6 py-3.5 font-medium text-slate-800">${log.reason || '-'}</td>
-<td class="px-6 py-3.5 text-slate-600">${log.detail || '-'}</td>
-<td class="px-6 py-3.5 text-right font-mono text-xs text-slate-600">${log.duration}</td>
-<td class="px-6 py-3.5 text-center"><button onclick="openEditLogModal(${index})" class="text-xs text-indigo-600 hover:text-indigo-900 font-medium underline">แก้ไข</button></td>
-</tr>
-                `;
+                const imgDisplay = (log.image && log.image !== '-') ? `<img src="${log.image}" class="w-12 h-12 object-cover rounded border border-slate-200 cursor-pointer mx-auto" onclick="window.open('${log.image}')" alt="thumbnail"/>` : '-';
+                return `<tr class="hover:bg-slate-50 transition"><td class="px-6 py-3.5 font-mono text-xs text-slate-500">${log.timestamp}</td><td class="px-6 py-3.5"><span class="px-2.5 py-1 rounded-full text-xs font-semibold ${badgeStyle}">${log.type}</span></td><td class="px-6 py-3.5 font-medium text-slate-800">${log.reason || '-'}</td><td class="px-6 py-3.5 text-xs text-slate-500 font-mono text-center">${imgDisplay}</td><td class="px-6 py-3.5 text-slate-600">${log.detail || '-'}</td><td class="px-6 py-3.5 text-right font-mono text-xs text-slate-600">${log.duration}</td><td class="px-6 py-3.5 text-center"><button onclick="openEditLogModal(${index})" class="text-xs text-indigo-600 hover:text-indigo-900 font-medium underline">แก้ไข</button></td></tr>`;
             }).join('');
         }
-
-        // Clear All Logs
         function clearLogs() {
             if (confirm('คุณต้องการล้างประวัติการบันทึกทั้งหมดหรือไม่?')) {
                 logs = [];
@@ -569,16 +445,10 @@
                 updateKPIs();
             }
         }
-
-        // Reset All System Data
         function resetAllData() {
             if (confirm('คุณต้องการรีเซ็ตข้อมูล ตัวจับเวลา และสถิติทั้งหมดกลับเป็นศูนย์หรือไม่?')) {
-                if (isShiftActive) {
-                    toggleShift();
-                }
-                if (isDowntime) {
-                    endDowntime();
-                }
+                if (isShiftActive) toggleShift();
+                if (isDowntime) endDowntime();
                 totalWorkSeconds = 0;
                 totalDowntimeSeconds = 0;
                 currentDowntimeSeconds = 0;
@@ -593,8 +463,6 @@
                 updateKPIs();
             }
         }
-
-        // Log Item Edit Controls
         function openEditLogModal(index) {
             document.getElementById('editLogIndex').value = index;
             document.getElementById('editLogReason').value = logs[index].reason || '';
@@ -602,11 +470,9 @@
             document.getElementById('editLogDuration').value = logs[index].duration;
             document.getElementById('editLogModal').classList.remove('hidden');
         }
-
         function closeEditLogModal() {
             document.getElementById('editLogModal').classList.add('hidden');
         }
-
         function saveLogEdit() {
             const index = document.getElementById('editLogIndex').value;
             if (index !== '' && logs[index]) {
@@ -617,48 +483,77 @@
             }
             closeEditLogModal();
         }
-
-        // CSV Export
-        function exportCSV() {
+        async function exportCSV() {
             if (logs.length === 0) {
                 showAlertDialog('ไม่มีข้อมูล Log สำหรับส่งออก');
                 return;
             }
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
             const rate = totalWorkSeconds > 0 ? ((totalDowntimeSeconds / totalWorkSeconds) * 100).toFixed(1) : 0;
             const incidentCount = logs.filter(l => l.type === 'INCIDENT').length;
-            csvContent += "=== ภาพรวมระบบ (System Summary) ===\n";
-`"เวลาทำงานรวม (Total Work)",${formatTime(totalWorkSeconds)}\n`;
-`"เวลาหยุดชะงัก (Total Downtime)",${formatTime(totalDowntimeSeconds)}\n`;
-`"สัดส่วน Downtime (%)",${rate}%\n`;
-`"จำนวนเหตุการณ์ (Incidents)",${incidentCount} ครั้ง\n\n`;
-            csvContent += "Timestamp,Type,Reason,Detail,Duration\n";
+            const summaryData = [
+                ["รายการ", "ค่า"],
+                ["เวลาทำงานรวม (Total Work)", formatTime(totalWorkSeconds)],
+                ["เวลาหยุดชะงัก (Total Downtime)", formatTime(totalDowntimeSeconds)],
+                ["สัดส่วน Downtime (%)", `${rate}%`],
+                ["จำนวนเหตุการณ์ (Incidents)", `${incidentCount} ครั้ง`]
+            ];
+            const logData = [["Timestamp", "Type", "Reason", "Detail", "Image", "Duration"]];
             logs.forEach(log => {
-                const row = [
-                    `"${log.timestamp}"`,
-                    `"${log.type}"`,
-                    `"${(log.reason || '').replace(/"/g, '""')}"`,
-                    `"${(log.detail || '').replace(/"/g, '""')}"`,
-                    `"${(log.duration || '').replace(/"/g, '""')}"`
-                ].join(",");
-                csvContent += row + "\n";
+                const imgStatus = (log.image && log.image !== '-') ? 'มีรูปภาพ' : '-';
+                logData.push([log.timestamp, log.type, log.reason || '-', log.detail || '-', imgStatus, log.duration || '-']);
             });
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `event_log_${new Date().toISOString().slice(0,10)}.csv`);
-            document.body.appendChild(link);
+            const workbook = new ExcelJS.Workbook();
+            const wsLogs = workbook.addWorksheet('Event Log');
+            wsLogs.columns = [
+                { header: 'Timestamp', key: 'timestamp', width: 15 },
+                { header: 'Type', key: 'type', width: 18 },
+                { header: 'Reason', key: 'reason', width: 25 },
+                { header: 'Detail', key: 'detail', width: 30 },
+                { header: 'Image', key: 'image', width: 15 },
+                { header: 'Duration', key: 'duration', width: 15 }
+            ];
+            for (let i = 0; i < logs.length; i++) {
+                const log = logs[i];
+                const row = wsLogs.addRow({
+                    timestamp: log.timestamp,
+                    type: log.type,
+                    reason: log.reason || '-',
+                    detail: log.detail || '-',
+                    image: (log.image && log.image !== '-') ? '' : '-',
+                    duration: log.duration || '-'
+                });
+                if (log.image && log.image !== '-') {
+                    row.height = 60;
+                    const imageId = workbook.addImage({
+                        base64: log.image,
+                        extension: 'png',
+                    });
+                    wsLogs.addImage(imageId, {
+                        tl: { col: 4, row: row.number - 1 },
+                        ext: { width: 70, height: 70 }
+                    });
+                }
+            }
+            const wsSummary = workbook.addWorksheet('Summary');
+            wsSummary.columns = [
+                { header: 'รายการ', key: 'item', width: 30 },
+                { header: 'ค่า', key: 'value', width: 20 }
+            ];
+            summaryData.slice(1).forEach(data => {
+                wsSummary.addRow({ item: data[0], value: data[1] });
+            });
+            const buffer = await workbook.xlsx.writeBuffer();
+            const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `event_log_${new Date().toISOString().slice(0, 10)}.xlsx`;
             link.click();
-            document.body.removeChild(link);
         }
-
-        // Custom Modal Alert System
         function showAlertDialog(message, title = 'แจ้งเตือนจากระบบ') {
             document.getElementById('alertModalTitle').textContent = title;
             document.getElementById('alertModalMessage').textContent = message;
             document.getElementById('alertDialogModal').classList.remove('hidden');
         }
-
         function closeAlertDialogModal() {
             document.getElementById('alertDialogModal').classList.add('hidden');
         }
