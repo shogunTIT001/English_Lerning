@@ -1,4 +1,3 @@
-# ระบบจับเวลาและบันทึกการหยิบสินค้าจาก Pallet (4 ชั้น / แยกประเภทกล่อง 4 แบบพร้อมกัน)
 
 <!DOCTYPE html>
 <html lang="th">
@@ -224,15 +223,23 @@
 
             <!-- ส่วนที่ 4: ตารางประวัติกิจกรรม (History Logs Table) -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col flex-grow min-h-[400px] overflow-hidden">
-                <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                <div class="p-4 border-b border-slate-100 flex flex-wrap justify-between items-center bg-slate-50/50 gap-2">
                     <h3 class="text-base font-semibold text-slate-800 flex items-center gap-2">
                         <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        ประวัติการทำรายการในเซสชันนี้
+                        ประวัติการทำรายการ
                     </h3>
-                    <button type="button" onclick="clearLogs()" class="text-xs text-rose-600 hover:text-rose-700 hover:underline font-medium transition">
-                        ล้างข้อมูลทั้งหมด
-                    </button>
+                    <div class="flex items-center gap-3">
+                        <!-- ปุ่มส่งออกเป็น Excel (CSV) -->
+                        <button type="button" onclick="exportToExcel()" class="text-xs bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            ส่งออก Excel
+                        </button>
+                        <button type="button" onclick="clearLogs()" class="text-xs text-rose-600 hover:text-rose-700 hover:underline font-medium transition">
+                            ล้างข้อมูลทั้งหมด
+                        </button>
+                    </div>
                 </div>
+
 
                 <!-- ตารางข้อมูลรองรับการสกรอลล์ในตัวกรณีข้อมูลยาว -->
                 <div class="flex-grow overflow-y-auto max-h-[500px]">
@@ -241,7 +248,6 @@
                             <tr>
                                 <th class="p-3 text-center">รอบ</th>
                                 <th class="p-3">รายละเอียดชั้นและชิ้นงาน</th>
-
                                 <th class="p-3 text-center">จำนวนรวม</th>
                                 <th class="p-3 text-right">เวลาสปลิต / สะสม</th>
                             </tr>
@@ -254,13 +260,13 @@
                                 </td>
                             </tr>
                         </tbody>
+
                     </table>
                 </div>
             </div>
 
         </div>
     </main>
-
 
     <!-- ส่วนท้ายของหน้า (Footer) -->
     <footer class="bg-white border-t border-slate-200 p-4 text-center text-xs text-slate-400 mt-auto">
@@ -275,13 +281,13 @@
         let timerInterval = null;
         let isRunning = false;
 
+
         let selectedTier = null;
         let logCounter = 0;
         let logsData = [];
         let lastRecordTime = 0; // เก็บเวลาของรายการก่อนหน้าเพื่อคำนวณระยะเวลาแต่ละรอบ (Split Time)
 
         // เรียกใช้งานเวลาปัจจุบันบนหัวเว็บ
-
         function updateClock() {
             const now = new Date();
             const dateStr = now.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -295,13 +301,13 @@
         function showCustomAlert(message) {
             const alertBox = document.getElementById('custom-alert');
             const messageEl = document.getElementById('alert-message');
+
             messageEl.innerText = message;
             alertBox.classList.remove('hidden');
             
             // ซ่อนอัตโนมัติหลังจากผ่านไป 4 วินาที
             setTimeout(() => {
                 alertBox.classList.add('hidden');
-
             }, 4000);
         }
 
@@ -315,13 +321,13 @@
                 // สลับการแสดงผลปุ่ม
                 document.getElementById('btn-start').classList.add('hidden');
                 document.getElementById('btn-pause').classList.remove('hidden');
+
             }
         }
 
         // ฟังก์ชันหยุดจับเวลาชั่วคราว (Pause)
         function pauseTimer() {
             if (isRunning) {
-
                 isRunning = false;
                 clearInterval(timerInterval);
                 
@@ -335,13 +341,13 @@
         function resetTimer() {
             isRunning = false;
             clearInterval(timerInterval);
+
             elapsedTime = 0;
             lastRecordTime = 0;
             
             document.getElementById('timer-string').innerText = "00:00.00";
             document.getElementById('btn-pause').classList.add('hidden');
             document.getElementById('btn-start').classList.remove('hidden');
-
         }
 
         // ฟังก์ชันอัปเดตหน้าจอหลักของตัวจับเวลา
@@ -356,12 +362,12 @@
             let seconds = parseInt((ms / 1000) % 60);
             let minutes = parseInt((ms / (1000 * 60)) % 60);
 
+
             minutes = (minutes < 10) ? "0" + minutes : minutes;
             seconds = (seconds < 10) ? "0" + seconds : seconds;
             milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
 
             return `${minutes}:${seconds}.${milliseconds}`;
-
         }
 
         // ฟังก์ชันเลือกชั้นของ Pallet
@@ -376,12 +382,12 @@
             const targetBtn = document.getElementById(`tier-btn-${tierNum}`);
             targetBtn.classList.remove('border-slate-200', 'bg-slate-50');
             targetBtn.classList.add('border-blue-600', 'bg-blue-50', 'ring-2', 'ring-blue-500/20');
+
         }
 
         // ฟังก์ชันปรับเพิ่มลดจำนวนชิ้นงานตามไอดีของแต่ละประเภทกล่อง (ปุ่ม +/-)
         function adjustQty(boxType, amount) {
             const qtyInput = document.getElementById(`qty-box-${boxType}`);
-
             let currentVal = parseInt(qtyInput.value) || 0;
             let newVal = currentVal + amount;
             if (newVal < 0) newVal = 0;
@@ -396,12 +402,12 @@
             const qtyC = parseInt(document.getElementById('qty-box-C').value) || 0;
             const qtyD = parseInt(document.getElementById('qty-box-D').value) || 0;
             
+
             const totalQtyInRound = qtyA + qtyB + qtyC + qtyD;
 
             // ตรวจสอบเงื่อนไขความพร้อมของข้อมูลก่อนทำการบันทึก
             if (!selectedTier) {
                 showCustomAlert("⚠️ กรุณาเลือก 'ชั้นของ Pallet' ก่อนบันทึกข้อมูล!");
-
                 return;
             }
             if (totalQtyInRound === 0) {
@@ -416,12 +422,12 @@
             logCounter++;
             
             // คำนวณช่วงเวลาการทำงานเฉพาะรอบนี้ (Duration)
+
             const splitDuration = elapsedTime - lastRecordTime;
             
             // สร้างรายละเอียด String เพื่อไปแสดงผลในการ์ดตารางประวัติ
             let detailsArr = [];
             if (qtyA > 0) detailsArr.push(`แบบ A (${qtyA} ใบ)`);
-
             if (qtyB > 0) detailsArr.push(`แบบ B (${qtyB} ใบ)`);
             if (qtyC > 0) detailsArr.push(`แบบ C (${qtyC} ใบ)`);
             if (qtyD > 0) detailsArr.push(`แบบ D (${qtyD} ใบ)`);
@@ -436,12 +442,12 @@
                 totalTimeStr: formatTime(elapsedTime)
             };
 
+
             logsData.unshift(logItem); // เพิ่มข้อมูลใหม่ไว้ด้านบนสุดของ Array
             lastRecordTime = elapsedTime; // อัปเดตเวลาอ้างอิงล่าสุด
 
             // อัปเดตหน้าแสดงผลตาราง และแดชบอร์ดด้านบน
             renderLogsTable();
-
             updateStatistics();
 
             // รีเซ็ตค่า Input ของกล่องกลับเป็น 0 เพื่อรอรอบถัดไป
@@ -456,12 +462,12 @@
 
         // ฟังก์ชันวาดตารางและอัปเดตแถวข้อมูลในหน้าเว็บ
         function renderLogsTable() {
+
             const tbody = document.getElementById('logs-tbody');
             
             if (logsData.length === 0) {
                 tbody.innerHTML = `
                     <tr id="empty-row">
-
                         <td colspan="4" class="p-8 text-center text-slate-400 italic">
                             ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง
                         </td>
@@ -476,12 +482,12 @@
                 
                 tr.innerHTML = `
                     <td class="p-3 text-center font-bold text-slate-500">${item.id}</td>
+
                     <td class="p-3">
                         <div class="font-semibold text-slate-800">ชั้นที่ ${item.tier}</div>
                         <div class="text-xs text-indigo-600 font-medium">${item.description}</div>
                     </td>
                     <td class="p-3 text-center font-bold text-slate-900 bg-slate-50/50">${item.qty}</td>
-
                     <td class="p-3 text-right digital-mono text-xs">
                         <span class="text-emerald-600 font-semibold block">${item.splitTimeStr}</span>
                         <span class="text-slate-400 block text-[10px]">รวม: ${item.totalTimeStr}</span>
@@ -496,12 +502,48 @@
             let totalBoxes = 0;
             logsData.forEach(item => {
                 totalBoxes += item.qty;
+
             });
 
             document.getElementById('stat-total-boxes').innerText = totalBoxes;
             document.getElementById('stat-total-records').innerText = logsData.length;
         }
 
+        // ฟังก์ชันส่งออกข้อมูลเป็นไฟล์ Excel (CSV พร้อม Byte Order Mark สำหรับภาษาไทย)
+        function exportToExcel() {
+            if (logsData.length === 0) {
+                showCustomAlert("⚠️ ไม่มีข้อมูลในระบบที่จะส่งออกได้!");
+                return;
+            }
+
+            // ใส่ \uFEFF (BOM) เพื่อให้ Microsoft Excel เปิดแล้วแสดงภาษาไทยได้สมบูรณ์ ไม่เป็นภาษาต่างดาว
+            let csvContent = "\uFEFF";
+            csvContent += "รอบ,ชั้น Pallet,รายละเอียดชิ้นงานกล่อง,จำนวนรวมทั้งหมด (ใบ),เวลาที่ใช้เฉพาะรอบนี้ (Split),เวลาสะสมรวมทั้งหมด\n";
+
+            // แปลงข้อมูลเรียงตามลำดับจากรอบแรกไปรอบล่าสุด (ย้อนอาร์เรย์เพื่อให้สอดคล้องกับเส้นเวลาจริง)
+            [...logsData].reverse().forEach(item => {
+
+                // คลีนเครื่องหมายคำพูดหากมีเพื่อไม่ให้โครงสร้าง CSV ผิดเพี้ยน
+                let cleanDesc = item.description.replace(/"/g, '""');
+                csvContent += `${item.id},ชั้นที่ ${item.tier},"${cleanDesc}",${item.qty},${item.splitTimeStr},${item.totalTimeStr}\n`;
+            });
+
+            // สร้างลิงก์ชั่วคราวเพื่อส่งออกและดาวน์โหลดไฟล์
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            const dateSuffix = new Date().toISOString().slice(0, 10);
+            
+            link.setAttribute("href", url);
+            link.setAttribute("download", `pallet_picking_report_${dateSuffix}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showCustomAlert("📊 ส่งออกไฟล์ข้อมูลสำหรับ Excel สำเร็จแล้ว!");
+
+        }
 
         // ฟังก์ชันล้างข้อมูลทั้งหมดเพื่อเริ่มกระบวนการใหม่
         function clearLogs() {
@@ -520,9 +562,9 @@
             });
             
             document.getElementById('qty-box-A').value = 0;
+
             document.getElementById('qty-box-B').value = 0;
             document.getElementById('qty-box-C').value = 0;
-
             document.getElementById('qty-box-D').value = 0;
             
             showCustomAlert("🗑️ ล้างประวัติข้อมูลทั้งหมดในระบบเรียบร้อยแล้ว");
