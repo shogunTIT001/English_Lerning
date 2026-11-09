@@ -43,8 +43,8 @@
     <!-- ส่วนเนื้อหาหลัก (Main Content) -->
     <main class="flex-grow max-w-7xl w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- ฝั่งซ้าย: ตัวจับเวลา และ ส่วนควบคุมการเลือกข้อมูล (8 Columns บนจอใหญ่) -->
-        <div class="lg:col-span-7 space-y-6 flex flex-col">
+        <!-- ฝั่งซ้าย: ตัวจับเวลา และ ส่วนควบคุมการเลือกข้อมูล -->
+        <div class="lg:col-span-6 space-y-6 flex flex-col">
             
             <!-- ส่วนที่ 1: หน้าจอจับเวลา (Timer Display) -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 text-center flex flex-col justify-center items-center">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <!-- ระบุจำนวนกล่องแต่ละแบบ (สามารถใส่พร้อมกันในชั้นเดียวได้) -->
+                <!-- ระบุจำนวนกล่องแต่ละแบบ -->
                 <div>
                     <label class="block text-sm font-medium text-slate-600 mb-3">2. ระบุจำนวนกล่องที่หยิบออกแยกตามรูปแบบ (อยู่รวมกันในชั้นนี้)</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -188,10 +188,10 @@
             </div>
         </div>
 
-        <!-- ฝั่งขวา: ตารางบันทึกประวัติ และข้อมูลเชิงสถิติ (5 Columns บนจอใหญ่) -->
-        <div class="lg:col-span-5 space-y-6 flex flex-col">
+        <!-- ฝั่งขวา: ตารางบันทึกประวัติ และข้อมูลเชิงสถิติ -->
+        <div class="lg:col-span-6 space-y-6 flex flex-col">
             
-            <!-- การ์ดแจ้งเตือน (Custom Message Box แทน Alert) -->
+            <!-- การ์ดแจ้งเตือน Custom Message Box -->
             <div id="custom-alert" class="hidden bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl shadow-sm transition-all duration-300">
                 <div class="flex">
                     <div class="flex-shrink-0">
@@ -206,7 +206,7 @@
                 </div>
             </div>
 
-            <!-- ส่วนที่ 3: สรุปภาพรวมความคืบหน้า (Mini Dashboard) -->
+            <!-- สรุปภาพรวมความคืบหน้า (Mini Dashboard) -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm text-center">
                     <span class="text-xs font-medium text-slate-400 block mb-1">จำนวนกล่องสะสมทั้งหมด</span>
@@ -221,46 +221,49 @@
             </div>
 
 
-            <!-- ส่วนที่ 4: ตารางประวัติกิจกรรม (History Logs Table) -->
+            <!-- ตารางประวัติกิจกรรม (History Logs Table) -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col flex-grow min-h-[400px] overflow-hidden">
                 <div class="p-4 border-b border-slate-100 flex flex-wrap justify-between items-center bg-slate-50/50 gap-2">
                     <h3 class="text-base font-semibold text-slate-800 flex items-center gap-2">
                         <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        ประวัติการทำรายการ
+                        ประวัติการทำรายการ (แยกคอลัมน์กล่อง)
                     </h3>
                     <div class="flex items-center gap-3">
-                        <!-- ปุ่มส่งออกเป็น Excel (CSV) -->
                         <button type="button" onclick="exportToExcel()" class="text-xs bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-medium px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             ส่งออก Excel
                         </button>
                         <button type="button" onclick="clearLogs()" class="text-xs text-rose-600 hover:text-rose-700 hover:underline font-medium transition">
-                            ล้างข้อมูลทั้งหมด
+                            ล้างข้อมูล
                         </button>
                     </div>
                 </div>
 
+                <!-- ตารางข้อมูลแยกคอลัมน์ พร้อมสกรอลล์แนวนอนหากจอแคบ -->
 
-                <!-- ตารางข้อมูลรองรับการสกรอลล์ในตัวกรณีข้อมูลยาว -->
-                <div class="flex-grow overflow-y-auto max-h-[500px]">
-                    <table class="w-full text-left text-sm border-collapse">
+                <div class="flex-grow overflow-auto max-h-[500px]">
+                    <table class="w-full text-left text-sm border-collapse min-w-[600px]">
                         <thead class="bg-slate-100 sticky top-0 text-slate-600 font-medium text-xs border-b border-slate-200">
                             <tr>
-                                <th class="p-3 text-center">รอบ</th>
-                                <th class="p-3">รายละเอียดชั้นและชิ้นงาน</th>
-                                <th class="p-3 text-center">จำนวนรวม</th>
-                                <th class="p-3 text-right">เวลาสปลิต / สะสม</th>
+                                <th class="p-3 text-center w-12">รอบ</th>
+                                <th class="p-3 text-center w-20">ชั้น Pallet</th>
+                                <th class="p-3 text-center bg-slate-200/50">กล่อง A</th>
+                                <th class="p-3 text-center bg-slate-200/50">กล่อง B</th>
+                                <th class="p-3 text-center bg-slate-200/50">กล่อง C</th>
+                                <th class="p-3 text-center bg-slate-200/50">กล่อง D</th>
+                                <th class="p-3 text-center w-16">รวม</th>
+                                <th class="p-3 text-right w-32">เวลาสปลิต / สะสม</th>
                             </tr>
                         </thead>
                         <tbody id="logs-tbody" class="divide-y divide-slate-100">
                             <!-- ข้อมูลจำลองสถานะว่าง -->
                             <tr id="empty-row">
-                                <td colspan="4" class="p-8 text-center text-slate-400 italic">
+                                <td colspan="8" class="p-8 text-center text-slate-400 italic">
                                     ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง
+
                                 </td>
                             </tr>
                         </tbody>
-
                     </table>
                 </div>
             </div>
@@ -275,19 +278,17 @@
 
     <!-- JavaScript สำหรับจัดการ Logic และการควบคุมระบบ -->
     <script>
-        // State variables ของระบบ
         let startTime = 0;
         let elapsedTime = 0;
+
         let timerInterval = null;
         let isRunning = false;
-
 
         let selectedTier = null;
         let logCounter = 0;
         let logsData = [];
-        let lastRecordTime = 0; // เก็บเวลาของรายการก่อนหน้าเพื่อคำนวณระยะเวลาแต่ละรอบ (Split Time)
+        let lastRecordTime = 0;
 
-        // เรียกใช้งานเวลาปัจจุบันบนหัวเว็บ
         function updateClock() {
             const now = new Date();
             const dateStr = now.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -297,71 +298,57 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // ฟังก์ชันจัดการ Custom Toast/Alert แจ้งเตือนผู้ใช้งาน
         function showCustomAlert(message) {
             const alertBox = document.getElementById('custom-alert');
-            const messageEl = document.getElementById('alert-message');
 
+            const messageEl = document.getElementById('alert-message');
             messageEl.innerText = message;
             alertBox.classList.remove('hidden');
-            
-            // ซ่อนอัตโนมัติหลังจากผ่านไป 4 วินาที
             setTimeout(() => {
                 alertBox.classList.add('hidden');
             }, 4000);
         }
 
-        // ฟังก์ชันเริ่มจับเวลา (Start)
         function startTimer() {
             if (!isRunning) {
                 isRunning = true;
                 startTime = Date.now() - elapsedTime;
                 timerInterval = setInterval(updateTimerDisplay, 10);
-                
-                // สลับการแสดงผลปุ่ม
                 document.getElementById('btn-start').classList.add('hidden');
                 document.getElementById('btn-pause').classList.remove('hidden');
-
             }
         }
 
-        // ฟังก์ชันหยุดจับเวลาชั่วคราว (Pause)
         function pauseTimer() {
+
             if (isRunning) {
                 isRunning = false;
                 clearInterval(timerInterval);
-                
-                // สลับการแสดงผลปุ่ม
                 document.getElementById('btn-pause').classList.add('hidden');
                 document.getElementById('btn-start').classList.remove('hidden');
             }
         }
 
-        // ฟังก์ชันรีเซ็ตเวลา (Reset)
         function resetTimer() {
             isRunning = false;
             clearInterval(timerInterval);
-
             elapsedTime = 0;
             lastRecordTime = 0;
-            
             document.getElementById('timer-string').innerText = "00:00.00";
             document.getElementById('btn-pause').classList.add('hidden');
             document.getElementById('btn-start').classList.remove('hidden');
         }
 
-        // ฟังก์ชันอัปเดตหน้าจอหลักของตัวจับเวลา
         function updateTimerDisplay() {
+
             elapsedTime = Date.now() - startTime;
             document.getElementById('timer-string').innerText = formatTime(elapsedTime);
         }
 
-        // ฟังก์ชันแปลงหน่วยมิลลิวินาที -> สตริงรูปแบบเวลา MM:SS.CC
         function formatTime(ms) {
             let milliseconds = parseInt((ms % 1000) / 10);
             let seconds = parseInt((ms / 1000) % 60);
             let minutes = parseInt((ms / (1000 * 60)) % 60);
-
 
             minutes = (minutes < 10) ? "0" + minutes : minutes;
             seconds = (seconds < 10) ? "0" + seconds : seconds;
@@ -370,22 +357,18 @@
             return `${minutes}:${seconds}.${milliseconds}`;
         }
 
-        // ฟังก์ชันเลือกชั้นของ Pallet
         function selectTier(tierNum) {
             selectedTier = tierNum;
-            // เคลียร์สไตล์เดิมของทุกปุ่มในกลุ่ม
             document.querySelectorAll('.tier-btn').forEach(btn => {
+
                 btn.classList.remove('border-blue-600', 'bg-blue-50', 'ring-2', 'ring-blue-500/20');
                 btn.classList.add('border-slate-200', 'bg-slate-50');
             });
-            // ใส่สไตล์ให้ปุ่มที่ถูกเลือก
             const targetBtn = document.getElementById(`tier-btn-${tierNum}`);
             targetBtn.classList.remove('border-slate-200', 'bg-slate-50');
             targetBtn.classList.add('border-blue-600', 'bg-blue-50', 'ring-2', 'ring-blue-500/20');
-
         }
 
-        // ฟังก์ชันปรับเพิ่มลดจำนวนชิ้นงานตามไอดีของแต่ละประเภทกล่อง (ปุ่ม +/-)
         function adjustQty(boxType, amount) {
             const qtyInput = document.getElementById(`qty-box-${boxType}`);
             let currentVal = parseInt(qtyInput.value) || 0;
@@ -394,18 +377,15 @@
             qtyInput.value = newVal;
         }
 
-        // ฟังก์ชันบันทึกข้อมูลและเพิ่มในตารางสรุป
         function recordLog() {
-            // ดึงค่าปริมาณกล่องแต่ละแบบ
             const qtyA = parseInt(document.getElementById('qty-box-A').value) || 0;
             const qtyB = parseInt(document.getElementById('qty-box-B').value) || 0;
+
             const qtyC = parseInt(document.getElementById('qty-box-C').value) || 0;
             const qtyD = parseInt(document.getElementById('qty-box-D').value) || 0;
             
-
             const totalQtyInRound = qtyA + qtyB + qtyC + qtyD;
 
-            // ตรวจสอบเงื่อนไขความพร้อมของข้อมูลก่อนทำการบันทึก
             if (!selectedTier) {
                 showCustomAlert("⚠️ กรุณาเลือก 'ชั้นของ Pallet' ก่อนบันทึกข้อมูล!");
                 return;
@@ -420,74 +400,68 @@
             }
 
             logCounter++;
-            
-            // คำนวณช่วงเวลาการทำงานเฉพาะรอบนี้ (Duration)
 
             const splitDuration = elapsedTime - lastRecordTime;
             
-            // สร้างรายละเอียด String เพื่อไปแสดงผลในการ์ดตารางประวัติ
-            let detailsArr = [];
-            if (qtyA > 0) detailsArr.push(`แบบ A (${qtyA} ใบ)`);
-            if (qtyB > 0) detailsArr.push(`แบบ B (${qtyB} ใบ)`);
-            if (qtyC > 0) detailsArr.push(`แบบ C (${qtyC} ใบ)`);
-            if (qtyD > 0) detailsArr.push(`แบบ D (${qtyD} ใบ)`);
-            const boxesDescription = detailsArr.join(', ');
-
             const logItem = {
                 id: logCounter,
                 tier: selectedTier,
-                description: boxesDescription,
+                qtyA: qtyA,
+                qtyB: qtyB,
+                qtyC: qtyC,
+                qtyD: qtyD,
                 qty: totalQtyInRound,
                 splitTimeStr: formatTime(splitDuration),
                 totalTimeStr: formatTime(elapsedTime)
             };
 
+            logsData.unshift(logItem);
+            lastRecordTime = elapsedTime;
 
-            logsData.unshift(logItem); // เพิ่มข้อมูลใหม่ไว้ด้านบนสุดของ Array
-            lastRecordTime = elapsedTime; // อัปเดตเวลาอ้างอิงล่าสุด
-
-            // อัปเดตหน้าแสดงผลตาราง และแดชบอร์ดด้านบน
             renderLogsTable();
             updateStatistics();
 
-            // รีเซ็ตค่า Input ของกล่องกลับเป็น 0 เพื่อรอรอบถัดไป
+
+            // รีเซ็ตค่าเป็น 0 รอรับข้อมูลรอบถัดไป
             document.getElementById('qty-box-A').value = 0;
             document.getElementById('qty-box-B').value = 0;
             document.getElementById('qty-box-C').value = 0;
             document.getElementById('qty-box-D').value = 0;
 
-            // แจ้งสถานะบันทึกสำเร็จแบบนุ่มนวล
-            showCustomAlert(`✅ บันทึกรอบที่ ${logCounter} ของชั้นที่ ${selectedTier} สำเร็จเรียบร้อย`);
+            showCustomAlert(`✅ บันทึกรอบที่ ${logCounter} ของชั้นที่ ${selectedTier} สำเร็จ`);
         }
 
-        // ฟังก์ชันวาดตารางและอัปเดตแถวข้อมูลในหน้าเว็บ
         function renderLogsTable() {
-
             const tbody = document.getElementById('logs-tbody');
             
             if (logsData.length === 0) {
                 tbody.innerHTML = `
                     <tr id="empty-row">
-                        <td colspan="4" class="p-8 text-center text-slate-400 italic">
+                        <td colspan="8" class="p-8 text-center text-slate-400 italic">
                             ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง
                         </td>
                     </tr>`;
+
                 return;
             }
 
             tbody.innerHTML = "";
             logsData.forEach(item => {
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50 transition border-b border-slate-100 text-slate-700";
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100 text-slate-700 text-center";
                 
-                tr.innerHTML = `
-                    <td class="p-3 text-center font-bold text-slate-500">${item.id}</td>
+                // คลาสแต่งสีเฉพาะให้แถวที่มีชิ้นงานเพื่อให้อ่านง่ายขึ้น
+                const valClass = (val) => val > 0 ? "font-bold text-slate-900" : "text-slate-300";
 
-                    <td class="p-3">
-                        <div class="font-semibold text-slate-800">ชั้นที่ ${item.tier}</div>
-                        <div class="text-xs text-indigo-600 font-medium">${item.description}</div>
-                    </td>
-                    <td class="p-3 text-center font-bold text-slate-900 bg-slate-50/50">${item.qty}</td>
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-500">${item.id}</td>
+                    <td class="p-3 font-semibold text-slate-800">ชั้นที่ ${item.tier}</td>
+                    <td class="p-3 ${valClass(item.qtyA)}">${item.qtyA}</td>
+                    <td class="p-3 ${valClass(item.qtyB)}">${item.qtyB}</td>
+                    <td class="p-3 ${valClass(item.qtyC)}">${item.qtyC}</td>
+                    <td class="p-3 ${valClass(item.qtyD)}">${item.qtyD}</td>
+                    <td class="p-3 font-bold text-indigo-700 bg-indigo-50/30">${item.qty}</td>
+
                     <td class="p-3 text-right digital-mono text-xs">
                         <span class="text-emerald-600 font-semibold block">${item.splitTimeStr}</span>
                         <span class="text-slate-400 block text-[10px]">รวม: ${item.totalTimeStr}</span>
@@ -497,55 +471,47 @@
             });
         }
 
-        // ฟังก์ชันคำนวณหาผลรวมทางสถิติของเซสชัน
         function updateStatistics() {
             let totalBoxes = 0;
             logsData.forEach(item => {
                 totalBoxes += item.qty;
-
             });
-
             document.getElementById('stat-total-boxes').innerText = totalBoxes;
             document.getElementById('stat-total-records').innerText = logsData.length;
         }
 
-        // ฟังก์ชันส่งออกข้อมูลเป็นไฟล์ Excel (CSV พร้อม Byte Order Mark สำหรับภาษาไทย)
         function exportToExcel() {
+
             if (logsData.length === 0) {
                 showCustomAlert("⚠️ ไม่มีข้อมูลในระบบที่จะส่งออกได้!");
                 return;
             }
 
-            // ใส่ \uFEFF (BOM) เพื่อให้ Microsoft Excel เปิดแล้วแสดงภาษาไทยได้สมบูรณ์ ไม่เป็นภาษาต่างดาว
+            // ใช้ BOM สำหรับ Excel ภาษาไทย
             let csvContent = "\uFEFF";
-            csvContent += "รอบ,ชั้น Pallet,รายละเอียดชิ้นงานกล่อง,จำนวนรวมทั้งหมด (ใบ),เวลาที่ใช้เฉพาะรอบนี้ (Split),เวลาสะสมรวมทั้งหมด\n";
+            // หัวคอลัมน์แบบแยกแต่ละประเภทออกจากกันอย่างชัดเจนตามต้องการ
+            csvContent += "รอบ,ชั้น Pallet,จำนวนกล่องแบบ A,จำนวนกล่องแบบ B,จำนวนกล่องแบบ C,จำนวนกล่องแบบ D,จำนวนรวมทั้งหมด (ใบ),เวลาที่ใช้เฉพาะรอบนี้ (Split),เวลาสะสมรวมทั้งหมด\n";
 
-            // แปลงข้อมูลเรียงตามลำดับจากรอบแรกไปรอบล่าสุด (ย้อนอาร์เรย์เพื่อให้สอดคล้องกับเส้นเวลาจริง)
             [...logsData].reverse().forEach(item => {
-
-                // คลีนเครื่องหมายคำพูดหากมีเพื่อไม่ให้โครงสร้าง CSV ผิดเพี้ยน
-                let cleanDesc = item.description.replace(/"/g, '""');
-                csvContent += `${item.id},ชั้นที่ ${item.tier},"${cleanDesc}",${item.qty},${item.splitTimeStr},${item.totalTimeStr}\n`;
+                csvContent += `${item.id},ชั้นที่ ${item.tier},${item.qtyA},${item.qtyB},${item.qtyC},${item.qtyD},${item.qty},${item.splitTimeStr},${item.totalTimeStr}\n`;
             });
 
-            // สร้างลิงก์ชั่วคราวเพื่อส่งออกและดาวน์โหลดไฟล์
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             const dateSuffix = new Date().toISOString().slice(0, 10);
             
+
             link.setAttribute("href", url);
-            link.setAttribute("download", `pallet_picking_report_${dateSuffix}.csv`);
+            link.setAttribute("download", `pallet_picking_split_columns_${dateSuffix}.csv`);
             link.style.visibility = 'hidden';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            showCustomAlert("📊 ส่งออกไฟล์ข้อมูลสำหรับ Excel สำเร็จแล้ว!");
-
+            showCustomAlert("📊 ส่งออกไฟล์ Excel แบบแยกคอลัมน์สำเร็จแล้ว!");
         }
 
-        // ฟังก์ชันล้างข้อมูลทั้งหมดเพื่อเริ่มกระบวนการใหม่
         function clearLogs() {
             logsData = [];
             logCounter = 0;
@@ -554,15 +520,14 @@
             updateStatistics();
             resetTimer();
             
-            // รีเซ็ตการเลือกของฝั่ง UI ด้วย
             selectedTier = null;
+
             document.querySelectorAll('.tier-btn').forEach(btn => {
                 btn.classList.remove('border-blue-600', 'bg-blue-50', 'ring-2', 'ring-blue-500/20');
                 btn.classList.add('border-slate-200', 'bg-slate-50');
             });
             
             document.getElementById('qty-box-A').value = 0;
-
             document.getElementById('qty-box-B').value = 0;
             document.getElementById('qty-box-C').value = 0;
             document.getElementById('qty-box-D').value = 0;
