@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pallet Picking Timer - ระบบบันทึกเวลาการหยิบสินค้า</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-hover: #1d4ed8;
+    --secondary: #475569;
+    --success: #15803d;
+    --success-hover: #166534;
+    --warning: #b45309;
+    --danger: #b91c1c;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --text-muted: #64748b;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Thai", sans-serif;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  header h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .clock-badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+  }
+  .timer-section {
+    text-align: center;
+  }
+  .timer-label {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .timer-display {
+    font-size: 3.75rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  button:active {
+    transform: scale(0.98);
+  }
+  .btn-start {
+    background: var(--success);
+    color: #fff;
+  }
+  .btn-start:hover { background: var(--success-hover); }
+  .btn-pause {
+    background: var(--warning);
+    color: #fff;
+  }
+  .btn-pause:hover { background: #92400e; }
+  .btn-reset {
+    background: var(--secondary);
+    color: #fff;
+  }
+  .btn-reset:hover { background: #334155; }
+  .btn-save {
+    background: var(--primary);
+    color: #fff;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+  .btn-save:hover { background: var(--primary-hover); }
+  .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.875rem;
+  }
+  .btn-export {
+    background: #0d9488;
+    color: #fff;
+  }
+  .btn-export:hover { background: #0f766e; }
+  .btn-clear {
+    background: var(--danger);
+    color: #fff;
+  }
+  .btn-clear:hover { background: #991b1b; }
+
+  h2 {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+    color: var(--text);
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+  }
+  .step-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+    color: #1e293b;
+  }
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .level-btn {
+    background: #f8fafc;
+    border: 2px solid var(--border);
+    color: var(--text);
+    padding: 12px;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .level-btn strong {
+    font-size: 1rem;
+  }
+  .level-btn span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .level-btn.active {
+    background: #eff6ff;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .level-btn.active span {
+    color: var(--primary-hover);
+  }
+
+  .box-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .box-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .box-card .box-code {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary);
+  }
+  .box-card .box-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .counter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .counter-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.35rem;
+    border-radius: 8px;
+    background: #e2e8f0;
+    color: var(--text);
+  }
+  .counter-btn:hover { background: #cbd5e1; }
+  .counter-btn.plus {
+    background: var(--primary);
+    color: #fff;
+  }
+  .counter-btn.plus:hover { background: var(--primary-hover); }
+  .counter-val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: center;
+  }
+
+  .alert-msg {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: none;
+    text-align: center;
+  }
+  .alert-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    display: block;
+  }
+  .alert-success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    display: block;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-box .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .stat-box .stat-number {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 4px;
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .table-header h3 {
+    font-size: 1.1rem;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  th, td {
+    padding: 11px 12px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+  }
+  tbody tr:hover {
+    background: #f8fafc;
+  }
+  .empty-row td {
+    padding: 28px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .badge-time {
+    background: #e0e7ff;
+    color: #1e3a8a;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 24px;
+    padding-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>ระบบบันทึกเวลาการหยิบสินค้า (Pallet Picking Workstation)</h1>
+    <div class="clock-badge" id="liveClock">กำลังโหลดเวลา...</div>
+  </header>
+
+  <!-- ส่วนจับเวลา -->
+  <div class="card timer-section">
+    <div class="timer-label">เวลาสะสมปัจจุบัน (Elapsed Time)</div>
+    <div class="timer-display" id="timerDisplay">00:00.00</div>
+    <div class="btn-group">
+      <button class="btn-start" id="btnStart" onclick="startTimer()">▶ เริ่มจับเวลา</button>
+      <button class="btn-pause" id="btnPause" onclick="pauseTimer()">⏸ หยุดชั่วคราว</button>
+      <button class="btn-reset" id="btnReset" onclick="resetTimer()">↺ รีเซ็ต</button>
+    </div>
+  </div>
+
+  <!-- ส่วนข้อมูลจำเพาะ -->
+  <div class="card">
+    <h2>ข้อมูลจำเพาะของการหยิบงานรอบนี้</h2>
+
+    <span class="step-title">1. เลือกชั้นของ Pallet ที่เข้าไปหยิบงาน</span>
+    <div class="level-grid" id="levelSelector">
+      <button type="button" class="level-btn" data-level="4" onclick="selectLevel(4)">
+        <strong>4 - ชั้นที่ 4 (ชั้นบนสุด)</strong>
+        <span>High Level</span>
+      </button>
+      <button type="button" class="level-btn" data-level="3" onclick="selectLevel(3)">
+        <strong>3 - ชั้นที่ 3</strong>
+        <span>Mid-High Level</span>
+      </button>
+      <button type="button" class="level-btn" data-level="2" onclick="selectLevel(2)">
+        <strong>2 - ชั้นที่ 2</strong>
+        <span>Mid-Low Level</span>
+      </button>
+      <button type="button" class="level-btn active" data-level="1" onclick="selectLevel(1)">
+        <strong>1 - ชั้นที่ 1 (ชั้นล่างสุด)</strong>
+        <span>Ground Level</span>
+      </button>
+    </div>
+
+    <span class="step-title">2. ระบุจำนวนกล่องที่หยิบออกแยกตามรูปแบบ (อยู่รวมกันในชั้นนี้)</span>
+    <div class="box-grid">
+      <div class="box-card">
+        <div class="box-code">แบบ A</div>
+        <div class="box-desc">กล่องเล็ก (S)</div>
+        <div class="counter-controls">
+          <button type="button" class="counter-btn" onclick="updateCount('A', -1)">-</button>
+          <span class="counter-val" id="countA">0</span>
+          <button type="button" class="counter-btn plus" onclick="updateCount('A', 1)">+</button>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-code">แบบ B</div>
+        <div class="box-desc">กล่องกลาง (M)</div>
+        <div class="counter-controls">
+          <button type="button" class="counter-btn" onclick="updateCount('B', -1)">-</button>
+          <span class="counter-val" id="countB">0</span>
+          <button type="button" class="counter-btn plus" onclick="updateCount('B', 1)">+</button>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-code">แบบ C</div>
+        <div class="box-desc">กล่องใหญ่ (L)</div>
+        <div class="counter-controls">
+          <button type="button" class="counter-btn" onclick="updateCount('C', -1)">-</button>
+          <span class="counter-val" id="countC">0</span>
+          <button type="button" class="counter-btn plus" onclick="updateCount('C', 1)">+</button>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-code">แบบ D</div>
+        <div class="box-desc">กล่องพิเศษ (X)</div>
+        <div class="counter-controls">
+          <button type="button" class="counter-btn" onclick="updateCount('D', -1)">-</button>
+          <span class="counter-val" id="countD">0</span>
+          <button type="button" class="counter-btn plus" onclick="updateCount('D', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn-save" onclick="saveLap()">บันทึกข้อมูลและ Lap เวลา</button>
+    <div id="alertBox" class="alert-msg"></div>
+  </div>
+
+  <!-- สรุปยอดสะสม -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-label">จำนวนกล่องสะสมทั้งหมด</div>
+      <div class="stat-number"><span id="totalBoxesStat">0</span> กล่อง</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">รอบที่หยิบงานสำเร็จ</div>
+      <div class="stat-number"><span id="totalRoundsStat">0</span> ครั้ง</div>
+    </div>
+  </div>
+
+  <!-- ตารางประวัติ -->
+  <div class="card">
+    <div class="table-header">
+      <h3>ประวัติการทำรายการ (แยกคอลัมน์กล่อง)</h3>
+      <div class="btn-group">
+        <button type="button" class="btn-sm btn-export" onclick="exportCSV()">📥 ส่งออก Excel</button>
+        <button type="button" class="btn-sm btn-clear" onclick="clearHistory()">🗑️ ล้างข้อมูล</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>รอบ</th>
+            <th>เวลาที่บันทึก (Timestamp)</th>
+            <th>ชั้น Pallet</th>
+            <th>กล่อง A</th>
+            <th>กล่อง B</th>
+            <th>กล่อง C</th>
+            <th>กล่อง D</th>
+            <th>รวม</th>
+            <th>เวลาสปลิต / สะสม</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody">
+          <tr class="empty-row">
+            <td colspan="9">ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Pallet Operations Dashboard - การจัดการและพัฒนาความสามารถการหยิบสินค้าภายในคลัง
+  </footer>
+</div>
+
+<script>
+  // นาฬิกาเวลาจริงด้านบน
+  function updateLiveClock() {
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('th-TH', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+    const timeStr = now.toLocaleTimeString('th-TH', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('liveClock').textContent = `${dateStr} | ${timeStr}`;
+  }
+  setInterval(updateLiveClock, 1000);
+  updateLiveClock();
+
+  // ตัวแปรจับเวลา
+  let startTime = 0;
+  let elapsedTime = 0;
+  let lastLapElapsed = 0;
+  let timerInterval = null;
+  let isRunning = false;
+
+  // ตัวแปรข้อมูลหน้างาน
+  let selectedLevel = 1;
+  let counts = { A: 0, B: 0, C: 0, D: 0 };
+  let records = [];
+
+  function formatTime(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    const centiseconds = Math.floor((ms % 1000) / 10);
+    return (
+      String(minutes).padStart(2, '0') + ':' +
+      String(seconds).padStart(2, '0') + '.' +
+      String(centiseconds).padStart(2, '0')
+    );
+  }
+
+  function startTimer() {
+    if (isRunning) return;
+    isRunning = true;
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(() => {
+      elapsedTime = Date.now() - startTime;
+      document.getElementById('timerDisplay').textContent = formatTime(elapsedTime);
+    }, 10);
+    hideAlert();
+  }
+
+  function pauseTimer() {
+    if (!isRunning) return;
+    isRunning = false;
+    clearInterval(timerInterval);
+  }
+
+  function resetTimer() {
+    pauseTimer();
+    elapsedTime = 0;
+    lastLapElapsed = 0;
+    document.getElementById('timerDisplay').textContent = '00:00.00';
+    hideAlert();
+  }
+
+  function selectLevel(level) {
+    selectedLevel = level;
+    document.querySelectorAll('.level-btn').forEach(btn => {
+      btn.classList.toggle('active', Number(btn.dataset.level) === level);
+    });
+  }
+
+  function updateCount(type, delta) {
+    counts[type] = Math.max(0, counts[type] + delta);
+    document.getElementById('count' + type).textContent = counts[type];
+  }
+
+  function showAlert(msg, type) {
+    const box = document.getElementById('alertBox');
+    box.textContent = msg;
+    box.className = 'alert-msg ' + (type === 'error' ? 'alert-error' : 'alert-success');
+  }
+
+  function hideAlert() {
+    const box = document.getElementById('alertBox');
+    box.className = 'alert-msg';
+    box.textContent = '';
+  }
+
+  function saveLap() {
+    const totalRoundBoxes = counts.A + counts.B + counts.C + counts.D;
+
+    if (elapsedTime === 0 && !isRunning) {
+      showAlert('กรุณากดปุ่ม "เริ่มจับเวลา" ก่อนบันทึกข้อมูล', 'error');
+      return;
+    }
+
+    if (totalRoundBoxes === 0) {
+      showAlert('กรุณาระบุจำนวนกล่องอย่างน้อย 1 กล่องก่อนบันทึก', 'error');
+      return;
+    }
+
+    // สร้าง Timestamp ณ ขณะที่กดบันทึก
+    const now = new Date();
+    const datePart = now.toLocaleDateString('th-TH', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+    const timePart = now.toLocaleTimeString('th-TH', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    const fullTimestamp = `${datePart} ${timePart}`;
+
+    const splitMs = elapsedTime - lastLapElapsed;
+    lastLapElapsed = elapsedTime;
+
+    const record = {
+      round: records.length + 1,
+      timestamp: fullTimestamp,
+      timeOnly: timePart,
+      level: selectedLevel,
+      A: counts.A,
+      B: counts.B,
+      C: counts.C,
+      D: counts.D,
+      total: totalRoundBoxes,
+      splitStr: formatTime(splitMs),
+      elapsedStr: formatTime(elapsedTime)
+    };
+
+    records.push(record);
+    renderTable();
+    updateSummary();
+
+    // รีเซ็ตจำนวนกล่องสำหรับรอบถัดไป
+    counts = { A: 0, B: 0, C: 0, D: 0 };
+    ['A', 'B', 'C', 'D'].forEach(k => {
+      document.getElementById('count' + k).textContent = '0';
+    });
+
+    showAlert(`บันทึกรอบที่ ${record.round} เรียบร้อยแล้ว (${record.timeOnly})`, 'success');
+  }
+
+  function renderTable() {
+    const tbody = document.getElementById('historyBody');
+    if (records.length === 0) {
+      tbody.innerHTML = `
+        <tr class="empty-row">
+          <td colspan="9">ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง</td>
+        </tr>`;
+      return;
+    }
+
+    tbody.innerHTML = records.map(r => `
+      <tr>
+        <td><strong>${r.round}</strong></td>
+        <td><span class="badge-time">${r.timestamp}</span></td>
+        <td>ชั้นที่ ${r.level}</td>
+        <td>${r.A}</td>
+        <td>${r.B}</td>
+        <td>${r.C}</td>
+        <td>${r.D}</td>
+        <td><strong>${r.total}</strong></td>
+        <td>${r.splitStr} / ${r.elapsedStr}</td>
+      </tr>
+    `).join('');
+  }
+
+  function updateSummary() {
+    const totalBoxes = records.reduce((sum, r) => sum + r.total, 0);
+    document.getElementById('totalBoxesStat').textContent = totalBoxes;
+    document.getElementById('totalRoundsStat').textContent = records.length;
+  }
+
+  function exportCSV() {
+    if (records.length === 0) {
+      showAlert('ยังไม่มีข้อมูลสำหรับส่งออกไฟล์ Excel', 'error');
+      return;
+    }
+
+    // ใช้ BOM (﻿) เพื่อให้เปิดภาษาไทยใน Microsoft Excel ได้ถูกต้อง
+    let csv = '﻿';
+    csv += 'รอบ,เวลาที่บันทึก (Timestamp),ชั้น Pallet,กล่อง A (S),กล่อง B (M),กล่อง C (L),กล่อง D (X),รวม (กล่อง),เวลาสปลิต,เวลาสะสม
+';
+
+    records.forEach(r => {
+      csv += `${r.round},"${r.timestamp}",ชั้นที่ ${r.level},${r.A},${r.B},${r.C},${r.D},${r.total},${r.splitStr},${r.elapsedStr}
+`;
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const nowStr = new Date().toISOString().slice(0, 10);
+    link.href = url;
+    link.setAttribute('download', `pallet_picking_log_${nowStr}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  function clearHistory() {
+    if (records.length === 0) return;
+    if (confirm('ต้องการล้างข้อมูลประวัติการบันทึกทั้งหมดหรือไม่?')) {
+      records = [];
+      renderTable();
+      updateSummary();
+      resetTimer();
+    }
+  }
+</script>
+</body>
+</html>
