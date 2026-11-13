@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบบันทึกเวลาการหยิบสินค้า (Pallet Picking Workstation)</title>
+  <!-- ไลบรารี SheetJS สำหรับสร้างไฟล์ Excel (.xlsx) -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-hover: #1d4ed8;
+      --success: #15803d;
+      --success-hover: #166534;
+      --warning: #b45309;
+      --danger: #b91c1c;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { margin: 0; padding: 20px; background: var(--bg); color: var(--text); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header { background: var(--primary); color: #fff; padding: 20px 24px; border-radius: 12px; margin-bottom: 20px; }
+    header h1 { margin: 0 0 6px 0; font-size: 1.5rem; }
+    header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+    .card { background: var(--card); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .card h2 { margin: 0 0 16px 0; font-size: 1.15rem; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 8px; }
+    
+    /* Timer & Summary */
+    .timer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; align-items: center; }
+    .timer-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .main-time { font-size: 2.5rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--primary); }
+    .split-time { font-size: 1rem; color: var(--muted); margin-top: 4px; }
+    .btn-group { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+    .stat-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 16px; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .stat-label { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+
+    /* Buttons */
+    button { cursor: pointer; border: none; border-radius: 8px; padding: 10px 16px; font-size: 0.95rem; font-weight: 600; transition: 0.15s; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-success:hover { background: var(--success-hover); }
+    .btn-warning { background: var(--warning); color: #fff; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { background: #f8fafc; }
+
+    /* Level Selection */
+    .level-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+    .level-btn { padding: 12px; border: 2px solid var(--border); background: #fff; border-radius: 10px; text-align: center; }
+    .level-btn.active { border-color: var(--primary); background: #eff6ff; color: var(--primary); }
+    .level-btn strong { display: block; font-size: 1rem; }
+    .level-btn span { font-size: 0.8rem; color: var(--muted); }
+
+    /* Box Counters */
+    .box-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .box-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; background: #fafafa; }
+    .box-card h3 { margin: 0 0 4px 0; font-size: 1rem; }
+    .box-card p { margin: 0 0 12px 0; font-size: 0.8rem; color: var(--muted); }
+    .counter { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .counter button { width: 36px; height: 36px; padding: 0; font-size: 1.2rem; background: #e2e8f0; color: var(--text); }
+    .counter button:hover { background: #cbd5e1; }
+    .counter input { width: 60px; text-align: center; font-size: 1.1rem; font-weight: 700; padding: 6px; border: 1px solid var(--border); border-radius: 6px; }
+    .record-action { text-align: right; }
+
+    /* Table */
+    .table-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: center; }
+    th { background: var(--primary); color: #fff; font-weight: 600; }
+    tr:nth-child(even) { background: #f8fafc; }
+    .empty-row { color: var(--muted); padding: 24px; }
+
+    @media (max-width: 768px) {
+      .timer-grid, .level-grid, .box-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ระบบบันทึกเวลาการหยิบสินค้า (Pallet Picking Workstation)</h1>
+      <p>บันทึกข้อมูลและ Lap เวลา พร้อมประทับเวลา (Timestamp) แยกตามชั้นและขนาดกล่อง</p>
+    </header>
+
+    <!-- 1. Timer & Summary -->
+    <section class="card">
+      <h2>1. ควบคุมเวลาและสรุปผล (Timer & Summary)</h2>
+      <div class="timer-grid">
+        <div class="timer-box">
+          <div class="main-time" id="totalTimerDisplay">00:00.00</div>
+          <div class="split-time">เวลารอบปัจจุบัน (Split): <strong id="splitTimerDisplay">00:00.00</strong></div>
+          <div class="btn-group">
+            <button class="btn-success" onclick="startTimer()">เริ่มจับเวลา</button>
+            <button class="btn-warning" onclick="pauseTimer()">หยุดชั่วคราว</button>
+            <button class="btn-outline" onclick="resetTimer()">รีเซ็ต</button>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="totalBoxesStat">0</div>
+          <div class="stat-label">จำนวนกล่องสะสมทั้งหมด (กล่อง)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="totalRoundsStat">0</div>
+          <div class="stat-label">รอบที่หยิบงานสำเร็จ (ครั้ง)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Level & Boxes -->
+    <section class="card">
+      <h2>2. ระบุชั้น Pallet และจำนวนกล่อง</h2>
+      <div class="level-grid" id="levelSelector">
+        <button type="button" class="level-btn active" data-level="ชั้น 1" onclick="selectLevel(this)">
+          <strong>ชั้นที่ 1 (ชั้นล่างสุด)</strong>
+          <span>Ground Level</span>
+        </button>
+        <button type="button" class="level-btn" data-level="ชั้น 2" onclick="selectLevel(this)">
+          <strong>ชั้นที่ 2</strong>
+          <span>Mid-Low Level</span>
+        </button>
+        <button type="button" class="level-btn" data-level="ชั้น 3" onclick="selectLevel(this)">
+          <strong>ชั้นที่ 3</strong>
+          <span>Mid-High Level</span>
+        </button>
+        <button type="button" class="level-btn" data-level="ชั้น 4" onclick="selectLevel(this)">
+          <strong>ชั้นที่ 4 (ชั้นบนสุด)</strong>
+          <span>High Level</span>
+        </button>
+      </div>
+
+      <div class="box-grid">
+        <div class="box-card">
+          <h3>แบบ A — กล่องเล็ก (S)</h3>
+          <p>ขนาดเล็ก หยิบง่าย</p>
+          <div class="counter">
+            <button type="button" onclick="adjustBox('A', -1)">-</button>
+            <input type="number" id="boxA" value="0" min="0">
+            <button type="button" onclick="adjustBox('A', 1)">+</button>
+          </div>
+        </div>
+        <div class="box-card">
+          <h3>แบบ B — กล่องกลาง (M)</h3>
+          <p>ขนาดมาตรฐาน</p>
+          <div class="counter">
+            <button type="button" onclick="adjustBox('B', -1)">-</button>
+            <input type="number" id="boxB" value="0" min="0">
+            <button type="button" onclick="adjustBox('B', 1)">+</button>
+          </div>
+        </div>
+        <div class="box-card">
+          <h3>แบบ C — กล่องใหญ่ (L)</h3>
+          <p>ขนาดใหญ่ น้ำหนักมาก</p>
+          <div class="counter">
+            <button type="button" onclick="adjustBox('C', -1)">-</button>
+            <input type="number" id="boxC" value="0" min="0">
+            <button type="button" onclick="adjustBox('C', 1)">+</button>
+          </div>
+        </div>
+        <div class="box-card">
+          <h3>แบบ D — กล่องพิเศษ (X)</h3>
+          <p>รูปทรงพิเศษ / แตกหักง่าย</p>
+          <div class="counter">
+            <button type="button" onclick="adjustBox('D', -1)">-</button>
+            <input type="number" id="boxD" value="0" min="0">
+            <button type="button" onclick="adjustBox('D', 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="record-action">
+        <button type="button" class="btn-primary" onclick="recordLap()">บันทึกข้อมูลและ Lap เวลา</button>
+      </div>
+    </section>
+
+    <!-- 3. History Table -->
+    <section class="card">
+      <div class="table-header">
+        <h2 style="margin:0; border:none;">3. ประวัติการทำรายการ (แยกคอลัมน์กล่องและ Timestamp)</h2>
+        <div>
+          <button type="button" class="btn-success" onclick="exportToExcel()">ส่งออก Excel (.xlsx)</button>
+          <button type="button" class="btn-danger" onclick="clearHistory()">ล้างประวัติทั้งหมด</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>รอบ</th>
+              <th>เวลาที่บันทึก (Timestamp)</th>
+              <th>ชั้น Pallet</th>
+              <th>กล่อง A</th>
+              <th>กล่อง B</th>
+              <th>กล่อง C</th>
+              <th>กล่อง D</th>
+              <th>รวม</th>
+              <th>เวลาสปลิต</th>
+              <th>เวลาสะสม</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr>
+              <td colspan="10" class="empty-row">ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let isRunning = false;
+    let totalElapsedMs = 0;
+    let splitElapsedMs = 0;
+    let lastTickTime = null;
+    let timerInterval = null;
+    let selectedLevel = "ชั้น 1";
+    let historyData = [];
+
+    function formatTime(ms) {
+      const totalSeconds = Math.floor(ms / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const centiseconds = Math.floor((ms % 1000) / 10);
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(centiseconds).padStart(2, '0')}`;
+    }
+
+    function updateTimerUI() {
+      document.getElementById('totalTimerDisplay').textContent = formatTime(totalElapsedMs);
+      document.getElementById('splitTimerDisplay').textContent = formatTime(splitElapsedMs);
+    }
+
+    function startTimer() {
+      if (isRunning) return;
+      isRunning = true;
+      lastTickTime = performance.now();
+      timerInterval = setInterval(() => {
+        const now = performance.now();
+        const delta = now - lastTickTime;
+        lastTickTime = now;
+        totalElapsedMs += delta;
+        splitElapsedMs += delta;
+        updateTimerUI();
+      }, 30);
+    }
+
+    function pauseTimer() {
+      if (!isRunning) return;
+      isRunning = false;
+      clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      totalElapsedMs = 0;
+      splitElapsedMs = 0;
+      updateTimerUI();
+    }
+
+    function selectLevel(btn) {
+      document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedLevel = btn.getAttribute('data-level');
+    }
+
+    function adjustBox(type, delta) {
+      const input = document.getElementById('box' + type);
+      const current = parseInt(input.value || 0, 10);
+      input.value = Math.max(0, current + delta);
+    }
+
+    function getTimestamp() {
+      const now = new Date();
+      const d = String(now.getDate()).padStart(2, '0');
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const y = now.getFullYear();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      return `${d}/${m}/${y} ${hh}:${mm}:${ss}`;
+    }
+
+    function recordLap() {
+      const boxA = parseInt(document.getElementById('boxA').value || 0, 10);
+      const boxB = parseInt(document.getElementById('boxB').value || 0, 10);
+      const boxC = parseInt(document.getElementById('boxC').value || 0, 10);
+      const boxD = parseInt(document.getElementById('boxD').value || 0, 10);
+      const total = boxA + boxB + boxC + boxD;
+
+      if (total === 0) {
+        alert("กรุณาระบุจำนวนกล่องอย่างน้อย 1 กล่องก่อนบันทึก");
+        return;
+      }
+
+      const record = {
+        timestamp: getTimestamp(),
+        level: selectedLevel,
+        boxA,
+        boxB,
+        boxC,
+        boxD,
+        total,
+        splitTime: formatTime(splitElapsedMs),
+        totalTime: formatTime(totalElapsedMs)
+      };
+
+      historyData.push(record);
+      splitElapsedMs = 0;
+      updateTimerUI();
+
+      // รีเซ็ตจำนวนกล่องสำหรับรอบถัดไป
+      ['A', 'B', 'C', 'D'].forEach(t => document.getElementById('box' + t).value = 0);
+
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const tbody = document.getElementById('historyBody');
+      if (historyData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="10" class="empty-row">ยังไม่มีข้อมูลการบันทึก กรุณากดเริ่มจับเวลาและระบุจำนวนกล่อง</td></tr>';
+        document.getElementById('totalBoxesStat').textContent = '0';
+        document.getElementById('totalRoundsStat').textContent = '0';
+        return;
+      }
+
+      let sumBoxes = 0;
+      tbody.innerHTML = historyData.map((item, idx) => {
+        sumBoxes += item.total;
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${item.timestamp}</td>
+            <td>${item.level}</td>
+            <td>${item.boxA}</td>
+            <td>${item.boxB}</td>
+            <td>${item.boxC}</td>
+            <td>${item.boxD}</td>
+            <td><strong>${item.total}</strong></td>
+            <td>${item.splitTime}</td>
+            <td>${item.totalTime}</td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('totalBoxesStat').textContent = sumBoxes;
+      document.getElementById('totalRoundsStat').textContent = historyData.length;
+    }
+
+    function clearHistory() {
+      if (historyData.length === 0) return;
+      if (confirm("ต้องการล้างประวัติการบันทึกทั้งหมดใช่หรือไม่?")) {
+        historyData = [];
+        renderHistory();
+      }
+    }
+
+    function exportToExcel() {
+      if (historyData.length === 0) {
+        alert("ยังไม่มีข้อมูลสำหรับการส่งออก");
+        return;
+      }
+
+      const rows = [
+        ["รายงานบันทึกเวลาการหยิบสินค้า (Pallet Picking Workstation)"],
+        [],
+        ["รอบ", "เวลาที่บันทึก (Timestamp)", "ชั้น Pallet", "กล่อง A", "กล่อง B", "กล่อง C", "กล่อง D", "รวม", "เวลาสปลิต", "เวลาสะสม"]
+      ];
+
+      let sumA = 0, sumB = 0, sumC = 0, sumD = 0, sumTotal = 0;
+
+      historyData.forEach((item, index) => {
+        sumA += item.boxA;
+        sumB += item.boxB;
+        sumC += item.boxC;
+        sumD += item.boxD;
+        sumTotal += item.total;
+
+        rows.push([
+          index + 1,
+          item.timestamp,
+          item.level,
+          item.boxA,
+          item.boxB,
+          item.boxC,
+          item.boxD,
+          item.total,
+          item.splitTime,
+          item.totalTime
+        ]);
+      });
+
+      const lastTotalTime = historyData[historyData.length - 1].totalTime || "";
+      rows.push(["รวมทั้งหมด", "", "", sumA, sumB, sumC, sumD, sumTotal, "-", lastTotalTime]);
+
+      const worksheet = XLSX.utils.aoa_to_sheet(rows);
+      worksheet["!cols"] = [
+        { wch: 12 }, { wch: 22 }, { wch: 14 },
+        { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 },
+        { wch: 12 }, { wch: 14 }, { wch: 14 }
+      ];
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "บันทึกการหยิบสินค้า");
+
+      const dateStr = new Date().toISOString().slice(0, 10);
+      XLSX.writeFile(workbook, `pallet_picking_report_${dateStr}.xlsx`);
+    }
+  </script>
+</body>
+</html>
