@@ -111,35 +111,61 @@
                 <h2 class="text-lg font-bold text-slate-800 border-b pb-3 mb-4">บันทึกเหตุการณ์ด่วน (Quick Incident)</h2>
                 <p class="text-xs text-slate-500 mb-4">กดเพื่อบันทึกเหตุการณ์ฉุกเฉินลงในตาราง Log โดยทันที</p>
                 <div class="grid grid-cols-1 gap-2.5 flex-1">
-                    <button onclick="logQuickIncident('Gripper Error')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Gripper Error (มือจับขัดข้อง)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Manual Stop')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Manual Stop (ช่างหยุดเครื่อง)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Abnormal Operation')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Abnormal Operation (พบสิ่งผิดปกติ/เสียงดัง/สั่น)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Pending Reject Removal')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Pending Reject Removal (รองานเสียออก)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Setup / Changeover')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Setup / Changeover (ปรับแต่งตั้งค่า)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Material Shortage')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Material Shortage (รอวัตถุดิบ/กล่อง/พาเลท)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                    <button onclick="logQuickIncident('Others')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
-                        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Others (อื่นๆ)</span>
-                        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
-                    </button>
-                </div>
+    <!-- 1. ระบบจับยึด (Gripper) -->
+    <button onclick="logQuickIncident('Gripper Error')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Gripper Error (มือจับขัดข้อง/กล่องหลุด/จับผิดขนาด)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 2. ระบบสายพานและการไหลของกล่อง (เพิ่มใหม่) -->
+    <button onclick="logQuickIncident('Conveyor & Flow Issue')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Conveyor & Flow Issue (สายพานติดขัด/กล่องไม่ไหล/ผิดแนว)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 3. ระบบกล้องและการสื่อสารข้อมูล (เพิ่มใหม่) -->
+    <button onclick="logQuickIncident('Vision / Data Sync Error')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Vision / Data Sync Error (กล้อง Photoneo/ข้อมูลไม่ตรงกัน)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 4. ช่างหยุดเครื่อง -->
+    <button onclick="logQuickIncident('Manual Stop')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Manual Stop (ช่างหยุดเครื่อง)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 5. พบสิ่งผิดปกติ -->
+    <button onclick="logQuickIncident('Abnormal Operation')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Abnormal Operation (พบสิ่งผิดปกติ/เสียงดัง/สั่น)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 6. รองานเสียออก -->
+    <button onclick="logQuickIncident('Pending Reject Removal')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Pending Reject Removal (รองานเสียออก)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 7. ปรับแต่งตั้งค่า -->
+    <button onclick="logQuickIncident('Setup / Changeover')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Setup / Changeover (ปรับแต่งตั้งค่า)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 8. รอวัตถุดิบ -->
+    <button onclick="logQuickIncident('Material Shortage')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Material Shortage (รอวัตถุดิบ/กล่อง/พาเลท)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+
+    <!-- 9. อื่นๆ -->
+    <button onclick="logQuickIncident('Others')" class="btn-incident w-full p-3 text-left bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 border border-slate-200 rounded-lg transition duration-150 flex justify-between items-center group">
+        <span class="text-sm font-medium text-slate-700 group-hover:text-indigo-900">Others (อื่นๆ)</span>
+        <span class="text-xs bg-slate-200 group-hover:bg-indigo-100 text-slate-600 group-hover:text-indigo-700 px-2 py-1 rounded">+ Record</span>
+    </button>
+</div>
+
             </div>
         </section>
         <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
