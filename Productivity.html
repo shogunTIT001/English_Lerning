@@ -212,13 +212,18 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">เลือกสาเหตุมาตรฐาน</label>
                     <select id="modalReasonSelect" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                        <option value="Gripper Error">Gripper Error (มือจับขัดข้อง)</option>
-                        <option value="Manual Stop">Manual Stop (ช่างหยุดเครื่อง)</option>
-                        <option value="Abnormal Operation">Abnormal Operation (พบสิ่งผิดปกติ/เสียงดัง/สั่น)</option>
-                        <option value="Pending Reject Removal">Pending Reject Removal (รองานเสียออก)</option>
-                        <option value="Setup / Changeover">Setup / Changeover (ปรับแต่งตั้งค่า)</option>
-                        <option value="Others">Others (อื่นๆ ระบุเพิ่มเติมด้านล่าง)</option>
-                    </select>
+    <option value="Gripper Error">Gripper Error (งานร่วงขณะจับ / จับไม่ได้ / แรงดูดตก)</option>
+    <option value="Robot Error">Robot Error (หุ่นยนต์ติด Alarm / หยุดทำงาน / หยิบพลาด)</option>
+    <option value="Vision / Size Mismatch">Vision / Data Error (จำขนาดกล่องผิด / Photoneo ไม่ตรง)</option>
+    <option value="Conveyor & Box Alignment">Conveyor Error (กล่องผิดแนว / ติดขัดบนสายพานเข้า-ออก)</option>
+    <option value="Printer Error">Printer Error (เครื่องปริ้นขัดข้อง / แท็กไม่ออก / ติดขัด)</option>
+    <option value="Manual Stop">Manual Stop (ช่างหยุดเครื่อง)</option>
+    <option value="Pending Reject Removal">Pending Reject Removal (รองานเสียออก)</option>
+    <option value="Setup / Changeover">Setup / Changeover (ปรับแต่งตั้งค่า)</option>
+    <option value="Material Shortage">Material Shortage (รอวัตถุดิบ/กล่อง/พาเลท)</option>
+    <option value="Others">Others (อื่นๆ ระบุเพิ่มเติมด้านล่าง)</option>
+</select>
+
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">รายละเอียดเพิ่มเติม (Option)</label>
